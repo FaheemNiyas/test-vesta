@@ -61,7 +61,9 @@ export interface AuthFormProps {
   subTitle: string;
   buttonText: string;
   subTitleButton: string;
+  subTitleButtonTwo: string;
   onSubtitleButtonClick: () => void;
+  onSubtitleButtonTwoClick: () => void;
   isLogin: boolean;
 }
 

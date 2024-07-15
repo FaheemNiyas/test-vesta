@@ -1,12 +1,12 @@
-import VerificationStatus from '@/components/organisms/EmailVerify';
-import { SuccessIcon } from '@/constants';
+import VerificationStatus from "@/components/organisms/EmailVerify";
+import { SuccessIcon } from "@/constants";
 
-import AuthLayout from '@/layouts/AuthLayout';
-import { useToast } from '@/providers/ToastProvider';
-import { useVerifyUser, useEmailVerifyCode } from '@/services/auth.service';
+import AuthLayout from "@/layouts/AuthLayout";
+import { useToast } from "@/providers/ToastProvider";
+import { useVerifyUser, useEmailVerifyCode } from "@/services/auth.service";
 
-import { useState, useEffect } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import { useSearchParams, useNavigate } from "react-router-dom";
 
 const EmailVerificationPage = () => {
   const [searchParams] = useSearchParams();
@@ -17,29 +17,29 @@ const EmailVerificationPage = () => {
 
   const emailVerifyCodeMutation = useEmailVerifyCode();
 
-  const registeredEmail = localStorage.getItem('registeredEmail') || '';
+  const registeredEmail = localStorage.getItem("registeredEmail") || "";
 
   useEffect(() => {
-    if (!searchParams.get('email') || !searchParams.get('code')) {
+    if (!searchParams.get("email") || !searchParams.get("code")) {
       return;
     }
 
     setVerify(true);
     verifyMutation.mutate(
       {
-        code: encodeURI(searchParams.get('code')!),
-        email: encodeURI(searchParams.get('email')!),
+        code: encodeURI(searchParams.get("code")!),
+        email: encodeURI(searchParams.get("email")!),
       },
       {
         onSuccess: (res) => {
           console.log(res);
-          success('Email verification successful!');
-          navigate('/email-verify', { replace: true });
+          success("Email verification successful!");
+          navigate("/email-verify", { replace: true });
         },
         onError: (err: any) => {
           const errorMessage =
             err?.response?.data?.message ||
-            'Error verifying email. Please try again.';
+            "Error verifying email. Please try again.";
           error(errorMessage);
           console.error(err);
         },
@@ -48,34 +48,34 @@ const EmailVerificationPage = () => {
   }, []);
 
   const resendVerificationCode = () => {
-    const email = localStorage.getItem('registeredEmail') || '';
+    const email = localStorage.getItem("registeredEmail") || "";
     if (email) {
       emailVerifyCodeMutation.mutate(
         { email: email },
         {
           onSuccess: (res) => {
             console.log(res);
-            success('Verification code resent successfully!');
+            success("Verification code resent successfully!");
           },
           onError: (err) => {
             console.log(err);
-            error('Error resending the verification code. Please try again.');
+            error("Error resending the verification code. Please try again.");
           },
         }
       );
     } else {
-      error('No email address found for verification.');
+      error("No email address found for verification.");
     }
   };
 
-  let secondaryTitleMessage = 'Verify your email';
+  let secondaryTitleMessage = "Verify your email";
 
   if (verifyMutation.isLoading) {
-    secondaryTitleMessage = 'Verifying your email...';
+    secondaryTitleMessage = "Verifying your email...";
   } else if (verifyMutation.isError) {
-    secondaryTitleMessage = 'Error verifying email.';
+    secondaryTitleMessage = "Error verifying email.";
   } else if (verifyMutation.isSuccess) {
-    secondaryTitleMessage = 'Email verified successfully!';
+    secondaryTitleMessage = "Email verified successfully!";
   }
 
   return (
@@ -87,21 +87,21 @@ const EmailVerificationPage = () => {
       >
         <VerificationStatus
           imageSrc={SuccessIcon}
-          imageAlt={'successIcon'}
+          imageAlt={"successIcon"}
           secondaryTitle={secondaryTitleMessage}
           secondaryText={
             !verifyMutation.isSuccess
               ? `A verification email has been sent to ${registeredEmail}. Click the link inside to get started.`
-              : ''
+              : ""
           }
           buttonText={
-            !verifyMutation.isSuccess ? 'I didn’t receive an email' : ''
+            !verifyMutation.isSuccess ? "I didn’t receive an email" : ""
           }
           onButtonClick={resendVerificationCode}
-          secondButtonText={verifyMutation.isSuccess ? 'Login' : ''}
+          secondButtonText={verifyMutation.isSuccess ? "Login" : ""}
           onSecondaryButtonClick={() => {
             if (verifyMutation.isSuccess) {
-              navigate('/auth');
+              navigate("/auth");
             }
           }}
         />

@@ -79,15 +79,10 @@ const LoginForm: React.FC = () => {
           onChange={handleInputChange}
         />
       </div>
-      <Link
-        to={"/forgot-password"}
-        className="flex items-end justify-end mt-1 text-xs font-medium sm:text-sm font-Inter"
-      >
-        Forgot password?
-      </Link>
+
       {!loading && (
         <Button
-          className="mt-8"
+          className="mt-8 rounded-3xl"
           text="Login"
           type="submit"
           fullWidth
@@ -97,6 +92,13 @@ const LoginForm: React.FC = () => {
       {loading && (
         <div className="py-4 text-center text-white">please wait</div>
       )}
+
+      <Link
+        to={"/forgot-password"}
+        className="flex items-center justify-center pt-4 text-xs font-medium underline text-primary sm:text-sm"
+      >
+        Forgot password?
+      </Link>
     </form>
   );
 };

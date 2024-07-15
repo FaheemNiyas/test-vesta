@@ -1,22 +1,24 @@
-import React from 'react';
-import AuthLayout from '@/layouts/AuthLayout';
-import AuthForm from '@/components/organisms/AuthForm';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import AuthLayout from "@/layouts/AuthLayout";
+import AuthForm from "@/components/organisms/AuthForm";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div className="relative h-min-screen pt-30">
       <AuthLayout
-        title="Login"
-        subtitle="Create your account to start investing today"
+        title="Welcome Back"
+        subtitle="Sign in & check out what you miss out in the platform!"
       >
         <AuthForm
-          title="Login to your account"
+          title="Sign In To Your Account"
           buttonText="Login"
-          subTitle="Already have an account?"
-          subTitleButton="Sign in here"
-          onSubtitleButtonClick={() => navigate('/sign-up')}
+          subTitle="Already registered?"
+          subTitleButton="Register here"
+          subTitleButtonTwo="Connect Wallet"
+          onSubtitleButtonClick={() => navigate("/sign-up")}
+          onSubtitleButtonTwoClick={() => navigate("/sign-up")}
           isLogin={true}
         />
       </AuthLayout>

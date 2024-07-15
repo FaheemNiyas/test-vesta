@@ -1,7 +1,7 @@
-import React from 'react';
-import AuthLayout from '@/layouts/AuthLayout';
-import AuthForm from '@/components/organisms/AuthForm';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import AuthLayout from "@/layouts/AuthLayout";
+import AuthForm from "@/components/organisms/AuthForm";
+import { useNavigate } from "react-router-dom";
 
 const SignupPage: React.FC = () => {
   const navigate = useNavigate();
@@ -14,10 +14,12 @@ const SignupPage: React.FC = () => {
       >
         <AuthForm
           title="Create your account"
-          buttonText="Continue"
+          buttonText="Login"
           subTitle="Already registered?"
-          subTitleButton="Sign in here"
-          onSubtitleButtonClick={() => navigate('/login')}
+          subTitleButton="Login Here"
+          subTitleButtonTwo="Connect Wallet"
+          onSubtitleButtonClick={() => navigate("/login")}
+          onSubtitleButtonTwoClick={() => navigate("/sign-up")}
           isLogin={false}
         />
       </AuthLayout>

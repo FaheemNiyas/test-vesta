@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { Spinner } from "./components/atoms/Spinner";
 import ReferralPage from "./pages/ReferralPage";
+import EmailInput from "./components/organisms/AuthForm/PreRegisterForm";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/Authentication/LoginPage"));
@@ -42,6 +43,7 @@ const App = () => {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/sign-up" element={<SignupPage />} />
+            <Route path="/register" element={<EmailInput />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
             <Route
               path="/email-verification"

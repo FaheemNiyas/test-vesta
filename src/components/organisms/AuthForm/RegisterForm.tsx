@@ -1,20 +1,22 @@
 import InputField from "@/components/atoms/InputField";
 import { passwordValidation } from "@/components/hoc/auth/passwordValidation";
-
 import { useToast } from "@/providers/ToastProvider";
 import { useRegisterUser } from "@/services/auth.service";
 import { useState, ChangeEvent, FormEvent, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 type FormData = {
   fname: string;
   lname: string;
   email: string;
   password: string;
+  confirmPassword: string;
   role: "USER";
 };
 
-export default function Register() {
+export default function RegisterForm() {
+  const location = useLocation();
+  const email = location.state?.email || "";
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [validate, setValidate] = useState({ msg: "", color: "red" });
@@ -23,8 +25,9 @@ export default function Register() {
   const initialFormData: FormData = {
     fname: "",
     lname: "",
-    email: "",
+    email: email,
     password: "",
+    confirmPassword: "",
     role: "USER",
   };
 
@@ -38,8 +41,14 @@ export default function Register() {
   };
 
   const handleSubmit = (e: FormEvent) => {
-    setLoading(true);
     e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      error("Passwords do not match!");
+      return;
+    }
+
+    setLoading(true);
+
     if (
       validate.msg === "strong" ||
       validate.msg === "medium" ||
@@ -55,7 +64,6 @@ export default function Register() {
         },
         onError: (err: any) => {
           const errorMessage =
-            // err?.response?.data?.error || 'Registration failed!';
             err?.response?.data?.message || "Registration failed!";
           error(errorMessage);
           console.error(err);
@@ -64,7 +72,7 @@ export default function Register() {
       });
     } else {
       setLoading(false);
-      error("Your password very weak!");
+      error("Your password is very weak!");
     }
   };
 
@@ -81,101 +89,95 @@ export default function Register() {
   }, [formData.password]);
 
   return (
-    <>
-      <form className="w-full mt-4 sm:mt-6" onSubmit={handleSubmit}>
-        <div className="flex flex-col gap-2">
-          <InputField
-            contentClass={""}
-            type="text"
-            name="fname"
-            placeholder="First Name"
-            label={""}
-            id={""}
-            required
-            value={formData.email}
-            onChange={handleInputChange}
-          />
+    <form className="w-full mt-4 sm:mt-6" onSubmit={handleSubmit}>
+      <div className="flex flex-col gap-2">
+        <InputField
+          contentClass={""}
+          type="email"
+          name="email"
+          placeholder="Email address"
+          label={""}
+          id={""}
+          required
+          value={formData.email}
+          onChange={handleInputChange}
+        />
 
-          <InputField
-            contentClass={""}
-            type="text"
-            name="lname"
-            placeholder="Last Name"
-            label={""}
-            id={""}
-            required
-            value={formData.lname}
-            onChange={handleInputChange}
-          />
+        <InputField
+          contentClass={""}
+          type="text"
+          name="fname"
+          placeholder="First Name"
+          label={""}
+          id={""}
+          required
+          value={formData.fname}
+          onChange={handleInputChange}
+        />
 
-          <InputField
-            contentClass={""}
-            type="email"
-            name="email"
-            placeholder="Email address"
-            label={""}
-            id={""}
-            required
-            value={formData.email}
-            onChange={handleInputChange}
-          />
+        <InputField
+          contentClass={""}
+          type="text"
+          name="lname"
+          placeholder="Last Name"
+          label={""}
+          id={""}
+          required
+          value={formData.lname}
+          onChange={handleInputChange}
+        />
 
-          <InputField
-            type="password"
-            name="password"
-            placeholder="Password"
-            label={""}
-            id={""}
-            required
-            value={formData.password}
-            onChange={handleInputChange}
-          />
-        </div>
-        {validate.msg.length !== 0 && validate?.color === "red" && (
-          <span className="ml-2 text-sm font-medium text-red-500 text-opacity-70 font-Inter">
-            {"password is " + validate?.msg}
-          </span>
+        <InputField
+          type="password"
+          name="password"
+          placeholder="Create Password"
+          label={""}
+          id={""}
+          required
+          value={formData.password}
+          onChange={handleInputChange}
+        />
+        <InputField
+          type="password"
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          label={""}
+          id={""}
+          required
+          value={formData.confirmPassword}
+          onChange={handleInputChange}
+        />
+      </div>
+      {validate.msg.length !== 0 && validate?.color === "red" && (
+        <span className="ml-2 text-sm font-medium text-red-500 text-opacity-70 font-Inter">
+          {"password is " + validate?.msg}
+        </span>
+      )}
+      {validate.msg.length !== 0 && validate?.color === "yellow" && (
+        <span className="ml-2 text-sm font-medium text-yellow-500 text-opacity-70 font-Inter">
+          {"password is " + validate?.msg}
+        </span>
+      )}
+      {validate.msg.length !== 0 && validate?.color === "green" && (
+        <span className="ml-2 text-sm font-medium text-green-500 text-opacity-70 font-Inter">
+          {"password is " + validate?.msg}
+        </span>
+      )}
+
+      <div className="w-full mt-8">
+        {loading && (
+          <div className="w-full text-center text-white animate-pulse ">
+            Please wait
+          </div>
         )}
-        {validate.msg.length !== 0 && validate?.color === "yellow" && (
-          <span className="ml-2 text-sm font-medium text-yellow-500 text-opacity-70 font-Inter">
-            {"password is " + validate?.msg}
-          </span>
+        {!loading && (
+          <input
+            type="submit"
+            className="w-full h-10 text-black bg-white rounded-xl font-Inter"
+            value="Submit Data"
+          />
         )}
-        {validate.msg.length !== 0 && validate?.color === "green" && (
-          <span className="ml-2 text-sm font-medium text-green-500 text-opacity-70 font-Inter">
-            {"password is " + validate?.msg}
-          </span>
-        )}
-
-        <div className="mt-8">
-          <label>
-            <input
-              type="checkbox"
-              required
-              className="rounded-[2px] border-2 border-white border-opacity-10 bg-white bg-opacity-5"
-            />
-
-            <span className="ml-2 text-sm font-medium text-white text-opacity-70 font-Inter">
-              I agree to Vesta's Terms and Conditions
-            </span>
-          </label>
-        </div>
-
-        <div className="w-full mt-8">
-          {loading && (
-            <div className="w-full text-center text-white animate-pulse ">
-              Please wait
-            </div>
-          )}
-          {!loading && (
-            <input
-              type="submit"
-              className="w-full h-10 bg-primary rounded-xl font-Inter"
-              value="Continue"
-            />
-          )}
-        </div>
-      </form>
-    </>
+      </div>
+    </form>
   );
 }

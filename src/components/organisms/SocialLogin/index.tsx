@@ -1,5 +1,5 @@
-import SocialLoginButton from '@/components/atoms/SocialLoginButton';
-import { appleIcon, facebookIcon, googleIcon, twitterIcon } from '@/constants';
+import SocialLoginButton from "@/components/atoms/SocialLoginButton";
+import { appleIcon, facebookIcon, googleIcon, twitterIcon } from "@/constants";
 
 const SocialLogin = () => {
   const handleSocialLogin = (provider: string) => {
@@ -15,32 +15,32 @@ const SocialLogin = () => {
         altText="Google"
         buttonText="Continue with Google"
         textColor="text-black"
-        onClick={() => handleSocialLogin('google')}
-        bgClass={'bg-white'}
+        onClick={() => handleSocialLogin("google")}
+        bgClass={"bg-white"}
       />
       <SocialLoginButton
         iconSrc={appleIcon}
         altText="Apple"
         buttonText="Continue with Apple"
         textColor="text-black"
-        onClick={() => handleSocialLogin('apple')}
-        bgClass={'bg-white'}
+        onClick={() => handleSocialLogin("apple")}
+        bgClass={"bg-white"}
       />
       <SocialLoginButton
         iconSrc={facebookIcon}
         altText="Facebook"
         buttonText="Continue with Facebook"
-        textColor="text-white"
-        onClick={() => handleSocialLogin('facebook')}
-        bgClass={'bg-blue-700'}
+        textColor="text-black"
+        onClick={() => handleSocialLogin("facebook")}
+        bgClass={"bg-white"}
       />
       <SocialLoginButton
         iconSrc={twitterIcon}
         altText="Twitter"
         buttonText="Continue with Twitter"
-        textColor="text-white"
-        onClick={() => handleSocialLogin('twitter')}
-        bgClass={'bg-black'}
+        textColor="text-black"
+        onClick={() => handleSocialLogin("twitter")}
+        bgClass={"bg-white"}
       />
     </div>
   );

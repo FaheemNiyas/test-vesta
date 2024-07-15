@@ -19,7 +19,7 @@ const SocialLoginButton: React.FC<SocialLoginButtonProps> = ({
 }) => {
   return (
     <button
-      className={`${bgClass} rounded-xl flex justify-center items-center px-4 py-[10px] w-full mt-4 gap-4`}
+      className={`${bgClass} rounded-3xl flex justify-center items-center px-4 py-[10px] w-full mt-4 gap-4`}
       onClick={onClick}
     >
       <img src={iconSrc} alt={altText} className="w-4 h-4 min-h-4 min-w-4" />

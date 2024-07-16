@@ -58,12 +58,12 @@ export type UserState = {
 
 export interface AuthFormProps {
   title: string;
-  subTitle: string;
-  buttonText: string;
-  subTitleButton: string;
-  subTitleButtonTwo: string;
-  onSubtitleButtonClick: () => void;
-  onSubtitleButtonTwoClick: () => void;
+  subTitle?: string;
+  buttonText?: string;
+  subTitleButton?: string;
+  subTitleButtonTwo?: string;
+  onSubtitleButtonClick?: () => void;
+  onSubtitleButtonTwoClick?: () => void;
   isLogin: boolean;
 }
 

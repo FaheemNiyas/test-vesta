@@ -15,7 +15,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
 }) => {
   return (
     <div className="flex justify-center">
-      <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-full w-full sm:w-[480px] bg-gradient-to-br from-slate-800/40 to-stone-300/30 rounded-2xl shadow border border-primary flex flex-col justify-center items-center p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
+      <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-full w-full sm:w-[480px] bg-[#1C355D]/80 rounded-2xl shadow border border-[#FFFFFF4D] flex flex-col justify-center items-center p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
         <div className="text-white text-xl sm:text-2xl md:text-3xl font-semibold font-['Poppins']">
           {title}
         </div>
@@ -38,7 +38,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
           </button>
         </div>
 
-        <SocialLogin />
+        {isLogin && <SocialLogin />}
 
         <div className="flex flex-row w-full gap-4 mt-4 sm:mt-6">
           <div className="w-full h-px mt-3 bg-white bg-opacity-10"></div>

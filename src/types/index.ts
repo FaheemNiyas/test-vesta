@@ -67,6 +67,13 @@ export interface AuthFormProps {
   isLogin: boolean;
 }
 
+export interface OptionalCardProps {
+  children: React.ReactNode;
+  title: string;
+  subTitle?: string;
+  isSkip: boolean;
+}
+
 export type VerificationStatusProps = {
   imageSrc: string;
   imageAlt: string;

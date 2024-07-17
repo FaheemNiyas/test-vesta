@@ -7,6 +7,7 @@ const OptionalCard: React.FC<OptionalCardProps> = ({
   title,
   subTitle,
   isSkip,
+  onSkipNow
 }) => {
   return (
     <div className="flex justify-center">
@@ -29,11 +30,11 @@ const OptionalCard: React.FC<OptionalCardProps> = ({
         {children}
 
         {isSkip && (
-          <div className="flex flex-row w-full justify-center gap-4 mt-4 sm:mt-6">
-            <span className="text-xs font-medium text-white text-opacity-50 sm:text-sm font-Inter">
-              skip for now
+          <button onClick={onSkipNow} className="flex flex-row w-full justify-center gap-4 mt-4 sm:mt-6">
+            <span className="text-xs font-medium text-white text-opacity-70 sm:text-sm font-Inter">
+              Skip for now
             </span>
-          </div>
+          </button>
         )}
       </div>
     </div>

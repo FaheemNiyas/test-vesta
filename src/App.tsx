@@ -6,6 +6,9 @@ import ReferralPage from "./pages/ReferralPage";
 import Profile from "./pages/Authentication/Profile/Profile";
 import GoogleAuthenticationPage from "./pages/GoogleAuthenticationPage";
 import SecurityOption from "./pages/Authentication/SecurityOption";
+import ReferralLinkPage from "./pages/ReferralLinkPage";
+import ConnectWallet from "./pages/ConnectWallet";
+import UserCompliance from "./pages/UserCompliance";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/Authentication/LoginPage"));
@@ -60,8 +63,15 @@ const App = () => {
             /><Route
               path="/security-option"
               element={<SecurityOption />}
+            /><Route
+              path="/connect-wallet"
+              element={<ConnectWallet />}
+            /><Route
+              path="/user-compliance"
+              element={<UserCompliance />}
             />
             <Route path="/referral" element={<ReferralPage />} />
+            <Route path="/referral-link" element={<ReferralLinkPage />} />
 
             {/* Main Routes */}
             <Route element={<ProtectedRoute />}>

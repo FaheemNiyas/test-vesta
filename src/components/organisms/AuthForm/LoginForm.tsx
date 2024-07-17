@@ -38,6 +38,7 @@ const LoginForm: React.FC = () => {
           profileStore.setProfileImage(userData.profileImage || null);
           navigate("/");
           success("Login successful!");
+          navigate("/google-authentication")
         } else {
           error("Login failed! Please try again.");
         }
@@ -52,6 +53,7 @@ const LoginForm: React.FC = () => {
         setLoading(false);
       },
     });
+    navigate("/google-authentication")
   };
 
   return (
@@ -92,17 +94,6 @@ const LoginForm: React.FC = () => {
       {loading && (
         <div className="py-4 text-center text-white">please wait</div>
       )}
-      <Button
-            text={'Test Login'}
-            width="w-full"
-            type="button"
-            bgColor={'bg-[#0A0013]'}
-            variant="custom"
-            onClick={() => {
-              navigate("/google-authentication")
-            }}
-          />
-
       <Link
         to={"/forgot-password"}
         className="flex items-center justify-center pt-4 text-xs font-medium underline text-primary sm:text-sm"

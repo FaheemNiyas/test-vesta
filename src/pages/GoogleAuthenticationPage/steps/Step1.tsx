@@ -1,12 +1,12 @@
-import { useForm, Controller, SubmitHandler } from 'react-hook-form';
+import { useForm, Controller, SubmitHandler } from "react-hook-form";
 
-import { useForgotPassword } from '../../../../services/auth.service';
-import { useToast } from '../../../../providers/ToastProvider';
-import { useState } from 'react';
-import InputField from '@/components/atoms/InputField';
+import { useState } from "react";
+import InputField from "@/components/atoms/InputField";
 
-import { StepProps } from '@/types';
-import Button from '@/components/atoms/Button';
+import { StepProps } from "@/types";
+import Button from "@/components/atoms/Button";
+import { useForgotPassword } from "@/services/auth.service";
+import { useToast } from "@/providers/ToastProvider";
 
 type IFormInput = {
   email: string;
@@ -24,14 +24,14 @@ const Step1 = ({ onNext }: StepProps) => {
 
     forgotPasswordMutation.mutate(data, {
       onSuccess: () => {
-        success('Email sent successfully');
+        success("Email sent successfully");
         setLoading(false);
 
         onNext();
       },
-      onError: (err) => {
-        error('Failed');
-        console.error('Error:', err);
+      onError: (err: any) => {
+        error("Failed");
+        console.error("Error:", err);
         setLoading(false);
       },
     });
@@ -52,24 +52,24 @@ const Step1 = ({ onNext }: StepProps) => {
                 placeholder="Email address"
                 id="emailInput"
                 inputProps={field}
-                error={formState.errors.email ? 'Email address' : ''}
+                error={formState.errors.email ? "Email address" : ""}
               />
             )}
           />
         </div>
         <div className="flex flex-col items-center justify-center gap-6 mt-6">
           <Button
-            text={loading ? 'Loading...' : 'Send verification code'}
+            text={loading ? "Loading..." : "Send verification code"}
             width="w-full"
             type="button"
-            bgColor={'bg-primary'}
+            bgColor={"bg-primary"}
             variant="custom"
           />
           <Button
-            text={'Skip for now'}
+            text={"Skip for now"}
             width="w-full"
             type="button"
-            bgColor={'bg-[#0A0013]'}
+            bgColor={"bg-[#0A0013]"}
             variant="custom"
             onClick={() => {
               onNext();

@@ -1,14 +1,11 @@
-import Button from "@/components/atoms/Button";
 import OTPInput from "@/components/atoms/OTPInput";
 import OptionalCard from "@/components/organisms/OptionalCard";
 import AuthLayout from "@/layouts/AuthLayout";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const GoogleAuthenticationPage = () => {
   const [isCorrect, setCorrect] = useState<boolean>(false);
 
-  const navigate = useNavigate();
   const handleSubmit = (pin: string) => {
     // handle api request here but I'm console logging it
     console.log(pin);
@@ -20,7 +17,7 @@ const GoogleAuthenticationPage = () => {
         title="Scan QR code using an authenticator app"
         subtitle="Use your google authenticator"
       >
-        <OptionalCard title="" isSkip={false} subTitle="">
+        <OptionalCard title="" isSkip={false} subTitle="" step={2}>
           <img className="w-[130px] h-[130px] bg-white" />
           <OTPInput length={6} onComplete={handleSubmit} isCorrect={isCorrect} />
           

@@ -71,7 +71,9 @@ export interface OptionalCardProps {
   children: React.ReactNode;
   title: string;
   subTitle?: string;
+  step?: number;
   onSkipNow?: () => void;
+  isSteps?: boolean;
   isSkip: boolean;
 }
 

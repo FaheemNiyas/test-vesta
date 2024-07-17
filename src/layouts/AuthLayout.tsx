@@ -9,7 +9,7 @@ const AuthLayout = ({
 }: AuthLayoutProps) => {
   return (
     <div
-      className={`w-full h-screen flex justify-center items-center px-4 py-16 ${wrapperClass}`}
+      className={`w-full min-h-screen flex justify-center items-center px-4 py-16 ${wrapperClass}`}
     >
       <div
         className={`w-full max-w-5xl flex flex-col justify-center items-center gap-10 md:gap-16 ${contentClass}`}

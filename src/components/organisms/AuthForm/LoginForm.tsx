@@ -92,6 +92,16 @@ const LoginForm: React.FC = () => {
       {loading && (
         <div className="py-4 text-center text-white">please wait</div>
       )}
+      <Button
+            text={'Test Login'}
+            width="w-full"
+            type="button"
+            bgColor={'bg-[#0A0013]'}
+            variant="custom"
+            onClick={() => {
+              navigate("/google-authentication")
+            }}
+          />
 
       <Link
         to={"/forgot-password"}

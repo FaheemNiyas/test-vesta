@@ -3,7 +3,7 @@ import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 
 import Button from "@/components/atoms/Button";
-import InputField from "@/components/InputField";
+import InputField from "@/components/atoms/InputField";
 
 type IFormInput = {
   code: string;

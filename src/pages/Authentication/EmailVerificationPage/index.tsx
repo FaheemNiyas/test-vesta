@@ -70,8 +70,8 @@ const EmailVerificationPage = () => {
     <>
       {verify && <div />}
       <AuthLayout
-        title="Let’s get started"
-        subtitle="Create your account to start investing today"
+        title="Email Verification"
+        subtitle="Verify your email for account creation"
       >
         <VerificationStatus
           imageSrc={SuccessIcon}

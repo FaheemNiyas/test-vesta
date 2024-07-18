@@ -1,21 +1,18 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Button from "@/components/atoms/Button";
+import OtpInput from "@/components/molecules/OtpInput";
 import { VerificationStatusProps } from "@/types";
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { FormEvent } from "react";
 
 const VerificationStatus = ({
   imageSrc,
   imageAlt,
   secondaryTitle,
   secondaryText,
-  buttonText,
-  secondButtonText,
-  onButtonClick,
-  onSecondaryButtonClick,
 }: VerificationStatusProps) => {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
   const [timer, setTimer] = useState<number>(154); // 2 minutes and 34 seconds
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -34,33 +31,11 @@ const VerificationStatus = ({
     )}`;
   };
 
-  const handleChange =
-    (index: number) => (e: ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value;
-      if (/^\d*$/.test(value)) {
-        const newOtp = [...otp];
-        newOtp[index] = value;
-        setOtp(newOtp);
-
-        // Move focus to next input if current input has a value
-        if (value && index < 5) {
-          inputRefs.current[index + 1]?.focus();
-        }
-      }
-    };
-
-  const handleKeyDown =
-    (index: number) => (e: React.KeyboardEvent<HTMLInputElement>) => {
-      if (e.key === "Backspace" && otp[index] === "") {
-        if (index > 0) {
-          inputRefs.current[index - 1]?.focus();
-        }
-      }
-    };
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Handle OTP submission logic here
+    // Mock validation for OTP
+    const correctOtp = "123456";
+    setIsCorrect(otp.join("") === correctOtp);
     console.log("OTP Submitted:", otp.join(""));
   };
 
@@ -70,11 +45,6 @@ const VerificationStatus = ({
       if (/^\d{6}$/.test(text)) {
         const newOtp = text.split("");
         setOtp(newOtp);
-        newOtp.forEach((digit, index) => {
-          if (inputRefs.current[index]) {
-            inputRefs.current[index]!.value = digit;
-          }
-        });
       } else {
         alert("Clipboard does not contain a valid 6-digit OTP");
       }
@@ -112,28 +82,26 @@ const VerificationStatus = ({
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className="flex justify-center py-4 mb-4 space-x-2 ">
-          {otp.map((digit, index) => (
-            <div key={index} className="flex flex-col items-center">
-              <label
-                htmlFor={`otp-input-${index}`}
-                className="sr-only"
-              >{`Digit ${index + 1}`}</label>
-              <input
-                id={`otp-input-${index}`}
-                type="text"
-                value={digit}
-                onChange={handleChange(index)}
-                onKeyDown={handleKeyDown(index)}
-                className="w-12 h-12 text-lg text-center border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                maxLength={1}
-                ref={(el) => (inputRefs.current[index] = el)}
-                placeholder="-"
-                title={`Digit ${index + 1}`}
-              />
-            </div>
-          ))}
-        </div>
+        <OtpInput value={otp} onChange={setOtp} isCorrect={isCorrect} />
+
+        {!otp.includes("") && isCorrect === false && (
+          <div className="flex flex-row text-[12px] items-center justify-start gap-2 text-[#FF3737] w-full !mt-2">
+            <img
+              alt="Error"
+              className="w-[20px] h-[20px] bg-[#FF3737] rounded-full"
+            />
+            Wrong code, try again!
+          </div>
+        )}
+        {!otp.includes("") && isCorrect === true && (
+          <div className="flex flex-row text-[12px] items-center justify-start gap-2 text-[#05F691] w-full !mt-2">
+            <img
+              alt="Success"
+              className="w-[20px] h-[20px] bg-[#05F691] rounded-full"
+            />
+            The code is right
+          </div>
+        )}
 
         <Button
           text={"Paste from Clipboard"}

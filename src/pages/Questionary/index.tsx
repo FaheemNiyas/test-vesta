@@ -166,13 +166,13 @@ const Questionary = () => {
   };
 
   return (
-    <MainLayout>
+    <div className="flex flex-col items-center min-h-screen p-8 sm:p-16">
       <div className="w-full border border-[#FFFFFF33] rounded-lg bg-[#FFFFFF0A] md:p-10 p-2">
         <div className="text-[36px] text-center py-5">Getting Started</div>
         <div className="text-[20px] text-center text-[#FFFFFFB8] pb-10">
           Let us know your knowledge of investment to help provide best services
         </div>
-        <div className="grid md:grid-cols-2 grid-cols-1 gap-10">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2">
           {questions.map((question, qIndex) => {
             return (
               <div
@@ -183,7 +183,7 @@ const Questionary = () => {
                   {question.title}{" "}
                 </div>
 
-                <div className="flex flex-col md:px-4 gap-3">
+                <div className="flex flex-col gap-3 md:px-4">
                   <div className="text-[#fff]  md:text-[14px] text-[11px] md:px-0 px-2">
                     {question.subtitle}
                   </div>
@@ -217,7 +217,7 @@ const Questionary = () => {
             );
           })}
         </div>
-        <div className="w-full flex flex-row justify-end">
+        <div className="flex flex-row justify-end w-full">
           <button
             onClick={handleSubmit}
             className="bg-[#05F691] py-2 md:w-1/4 w-full rounded-full text-black md:text-[28px] text-[14px] md:mt-10 mt-2"
@@ -226,7 +226,7 @@ const Questionary = () => {
           </button>
         </div>
       </div>
-    </MainLayout>
+    </div>
   );
 };
 

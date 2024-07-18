@@ -1,12 +1,12 @@
-import AuthLayout from '@/layouts/AuthLayout';
-import StepLayout from '@/layouts/StepLayout';
+import AuthLayout from "@/layouts/AuthLayout";
+import StepLayout from "@/layouts/StepLayout";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import Step1 from './steps/Step1';
-import Step2 from './steps/Step2';
-import Step3 from './steps/Step3';
-import Step4 from './steps/Step4';
+import Step1 from "./steps/Step1";
+import Step2 from "./steps/Step2";
+import Step3 from "./steps/Step3";
+import Step4 from "./steps/Step4";
 
 const ForgotPasswordPage = () => {
   const [step, setStep] = useState(1);
@@ -24,40 +24,40 @@ const ForgotPasswordPage = () => {
   switch (step) {
     case 1:
       content = <Step1 onNext={nextStep} />;
-      stepTitle = 'Enter Your Email';
-      stepSubtitle = 'Enter your email address to continue';
-      layoutTitle = 'Password Reset';
-      layoutSubTitle = 'Reset your Password';
+      stepTitle = "Enter Your Email";
+      stepSubtitle = "Enter your email address to continue";
+      layoutTitle = "Password Reset";
+      layoutSubTitle = "Reset your Password";
       break;
     case 2:
       content = <Step2 onNext={nextStep} />;
-      stepTitle = 'Enter Code';
+      stepTitle = "Enter Code";
       stepSubtitle =
-        'Enter the 6-digit authentication code we just sent to your email address: dha*****@info****.net';
-      layoutTitle = 'Password Reset';
-      layoutSubTitle = 'Reset your Password';
+        "Enter the 6-digit authentication code we just sent to your email address: dha*****@info****.net";
+      layoutTitle = "Password Reset";
+      layoutSubTitle = "Reset your Password";
       break;
     case 3:
       content = <Step3 onNext={nextStep} />;
-      stepTitle = 'Enter Code';
+      stepTitle = "Enter Code";
       stepSubtitle =
-        'Enter the 6-digit authentication code we just sent to your email address: dha*****@info****.net';
-      layoutTitle = 'Password Reset';
-      layoutSubTitle = 'Reset your Password';
+        "Enter the 6-digit authentication code we just sent to your email address: dha*****@info****.net";
+      layoutTitle = "Password Reset";
+      layoutSubTitle = "Reset your Password";
       break;
     case 4:
       content = <Step4 />;
-      stepTitle = 'Password Changed Successfully';
-      stepSubtitle = '';
-      layoutTitle = 'Password Changed Successfully';
-      layoutSubTitle = '';
+      stepTitle = "Password Changed Successfully";
+      stepSubtitle = "";
+      layoutTitle = "Password Changed Successfully";
+      layoutSubTitle = "";
       break;
     default:
       content = <div>Unknown Step</div>;
-      stepTitle = 'Error';
-      stepSubtitle = 'An error has occurred';
-      layoutTitle = 'Error';
-      layoutSubTitle = '';
+      stepTitle = "Error";
+      stepSubtitle = "An error has occurred";
+      layoutTitle = "Error";
+      layoutSubTitle = "";
   }
 
   return (

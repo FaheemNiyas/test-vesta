@@ -1,7 +1,5 @@
 import React from "react";
 import { AuthFormProps } from "@/types";
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
 import SocialLogin from "../SocialLogin";
 
 const AuthForm: React.FC<AuthFormProps> = ({
@@ -12,6 +10,11 @@ const AuthForm: React.FC<AuthFormProps> = ({
   onSubtitleButtonClick,
   onSubtitleButtonTwoClick,
   isLogin,
+  formFields,
+  onSubmit,
+  loading,
+  additionalLinks,
+  showSocialLogin,
 }) => {
   return (
     <div className="flex justify-center">
@@ -23,22 +26,28 @@ const AuthForm: React.FC<AuthFormProps> = ({
           <span className="text-xs font-medium text-white text-opacity-70 sm:text-sm font-Inter">
             {subTitle}
           </span>
-          <button
-            onClick={onSubtitleButtonClick}
-            className="ml-2 text-xs font-medium underline sm:text-sm font-Inter text-primary"
-          >
-            {subTitleButton}
-          </button>
-          <div className="px-2">or</div>
-          <button
-            onClick={onSubtitleButtonTwoClick}
-            className="text-xs font-medium underline sm:text-sm font-Inter text-primary"
-          >
-            {subTitleButtonTwo}
-          </button>
+          {subTitleButton && (
+            <button
+              onClick={onSubtitleButtonClick}
+              className="ml-2 text-xs font-medium underline sm:text-sm font-Inter text-primary"
+            >
+              {subTitleButton}
+            </button>
+          )}
+          {subTitleButtonTwo && (
+            <>
+              <div className="px-2">or</div>
+              <button
+                onClick={onSubtitleButtonTwoClick}
+                className="text-xs font-medium underline sm:text-sm font-Inter text-primary"
+              >
+                {subTitleButtonTwo}
+              </button>
+            </>
+          )}
         </div>
 
-        {isLogin && <SocialLogin />}
+        {showSocialLogin && <SocialLogin />}
 
         <div className="flex flex-row w-full gap-4 mt-4 sm:mt-6">
           <div className="w-full h-px mt-3 bg-white bg-opacity-10"></div>
@@ -48,7 +57,20 @@ const AuthForm: React.FC<AuthFormProps> = ({
           <div className="w-full h-px mt-3 bg-white bg-opacity-10"></div>
         </div>
 
-        {isLogin ? <LoginForm /> : <RegisterForm />}
+        <form className="w-full mt-4 sm:mt-6" onSubmit={onSubmit}>
+          <div className="flex flex-col gap-2">{formFields}</div>
+          {loading ? (
+            <div className="py-4 text-center text-white">Please wait</div>
+          ) : (
+            <button
+              type="submit"
+              className="w-full h-10 mt-8 text-black bg-white rounded-3xl"
+            >
+              {isLogin ? "Login" : "Register"}
+            </button>
+          )}
+          {additionalLinks}
+        </form>
       </div>
     </div>
   );

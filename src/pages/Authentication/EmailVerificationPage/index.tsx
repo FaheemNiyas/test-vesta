@@ -36,10 +36,8 @@ const EmailVerificationPage = () => {
           success("Email verification successful!");
           navigate("/email-verify", { replace: true });
         },
-        onError: (err: any) => {
-          const errorMessage =
-            err?.response?.data?.message ||
-            "Error verifying email. Please try again.";
+        onError: (err) => {
+          const errorMessage = "Error verifying email. Please try again.";
           error(errorMessage);
           console.error(err);
         },
@@ -68,16 +66,6 @@ const EmailVerificationPage = () => {
     }
   };
 
-  let secondaryTitleMessage = "Verify your email";
-
-  if (verifyMutation.isLoading) {
-    secondaryTitleMessage = "Verifying your email...";
-  } else if (verifyMutation.isError) {
-    secondaryTitleMessage = "Error verifying email.";
-  } else if (verifyMutation.isSuccess) {
-    secondaryTitleMessage = "Email verified successfully!";
-  }
-
   return (
     <>
       {verify && <div />}
@@ -88,10 +76,10 @@ const EmailVerificationPage = () => {
         <VerificationStatus
           imageSrc={SuccessIcon}
           imageAlt={"successIcon"}
-          secondaryTitle={secondaryTitleMessage}
+          secondaryTitle={"Enter Code"}
           secondaryText={
             !verifyMutation.isSuccess
-              ? `A verification email has been sent to ${registeredEmail}. Click the link inside to get started.`
+              ? `A one time authentication code has been sent to ${registeredEmail}`
               : ""
           }
           buttonText={

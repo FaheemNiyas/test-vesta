@@ -57,19 +57,14 @@ const App = () => {
             <Route
               path="/two-step-verification"
               element={<TwoStepVerificationPage />}
-            /><Route
+            />
+            <Route
               path="/google-authentication"
               element={<GoogleAuthenticationPage />}
-            /><Route
-              path="/security-option"
-              element={<SecurityOption />}
-            /><Route
-              path="/connect-wallet"
-              element={<ConnectWallet />}
-            /><Route
-              path="/user-compliance"
-              element={<UserCompliance />}
             />
+            <Route path="/security-option" element={<SecurityOption />} />
+            <Route path="/connect-wallet" element={<ConnectWallet />} />
+            <Route path="/user-compliance" element={<UserCompliance />} />
             <Route path="/referral" element={<ReferralPage />} />
             <Route path="/referral-link" element={<ReferralLinkPage />} />
 

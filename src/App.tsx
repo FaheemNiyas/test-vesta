@@ -9,6 +9,7 @@ import SecurityOption from "./pages/Authentication/SecurityOption";
 import ReferralLinkPage from "./pages/ReferralLinkPage";
 import ConnectWallet from "./pages/ConnectWallet";
 import UserCompliance from "./pages/UserCompliance";
+import ResetPasswordPage from "./pages/Authentication/ResetPasswordPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/Authentication/LoginPage"));
@@ -50,6 +51,7 @@ const App = () => {
             <Route path="/sign-up" element={<SignupPage />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+            <Route path="/reset-password" element={<ResetPasswordPage />} />
             <Route
               path="/email-verification"
               element={<EmailVerificationPage />}

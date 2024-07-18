@@ -6,9 +6,10 @@ import { Spinner } from "./components/atoms/Spinner";
 import Profile from "./pages/Authentication/Profile/Profile";
 import GoogleAuthenticationPage from "./pages/GoogleAuthenticationPage";
 import SecurityOption from "./pages/Authentication/SecurityOption";
-import ReferralLinkPage from "./pages/ReferralLinkPage";
 import ConnectWallet from "./pages/ConnectWallet";
 import UserCompliance from "./pages/UserCompliance";
+import Questionary from "./pages/Questionary";
+import ReferralLinkPage from "./pages/ReferralLinkPage";
 import ResetPasswordPage from "./pages/Authentication/ResetPasswordPage";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -67,6 +68,7 @@ const App = () => {
             <Route path="/security-option" element={<SecurityOption />} />
             <Route path="/connect-wallet" element={<ConnectWallet />} />
             <Route path="/user-compliance" element={<UserCompliance />} />
+            <Route path="/questionary" element={<Questionary />} />
 
             <Route path="/referral-link" element={<ReferralLinkPage />} />
 

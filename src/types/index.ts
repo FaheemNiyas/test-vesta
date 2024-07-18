@@ -59,12 +59,16 @@ export type UserState = {
 export interface AuthFormProps {
   title: string;
   subTitle?: string;
-  buttonText?: string;
   subTitleButton?: string;
   subTitleButtonTwo?: string;
   onSubtitleButtonClick?: () => void;
   onSubtitleButtonTwoClick?: () => void;
   isLogin: boolean;
+  formFields: React.ReactNode;
+  onSubmit: (e: React.FormEvent) => void;
+  loading: boolean;
+  additionalLinks?: React.ReactNode;
+  showSocialLogin?: boolean;
 }
 
 export interface OptionalCardProps {

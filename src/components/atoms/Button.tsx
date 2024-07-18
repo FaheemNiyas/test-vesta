@@ -31,7 +31,7 @@ const Button: React.FC<ButtonProps> = ({
   className = "",
 }) => {
   const getClassNames = () => {
-    let classNames = `px-6 py-2 rounded-xl flex justify-center items-center gap-2 ${textColor}`;
+    let classNames = `px-6 py-2  flex justify-center items-center gap-2 ${textColor}`;
 
     if (variant === "primary") {
       classNames += ` bg-primary ${fullWidth ? "w-full" : width}`;

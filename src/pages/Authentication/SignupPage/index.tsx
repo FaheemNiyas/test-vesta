@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import AuthLayout from "@/layouts/AuthLayout";
 import { useNavigate } from "react-router-dom";
-import Button from "@/components/atoms/Button";
-import InputField from "@/components/InputField";
+import AuthForm from "@/components/organisms/AuthForm";
+import InputField from "@/components/atoms/InputField";
 
 const SignupPage: React.FC = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +17,7 @@ const SignupPage: React.FC = () => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(email)) {
-      navigate("/profile", { state: { email } });
+      navigate("/email-verification", { state: { email } });
     } else {
       setError("Invalid email address");
     }
@@ -29,37 +29,39 @@ const SignupPage: React.FC = () => {
         title="Let’s get started"
         subtitle="Create your account to start investing today"
       >
-        <div className="flex justify-center">
-          <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-full w-full sm:w-[480px] bg-[#1C355D]/80 rounded-2xl shadow border border-[#FFFFFF4D] flex flex-col justify-center items-center p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
-            <form className="w-full mt-4 sm:mt-6" onSubmit={handleEmailSubmit}>
-              <div className="flex flex-col gap-2">
-                <InputField
-                  contentClass={""}
-                  type="email"
-                  name="email"
-                  placeholder="Email address"
-                  label={""}
-                  id={""}
-                  required
-                  value={email}
-                  onChange={handleEmailChange}
-                />
-              </div>
-              {error && (
-                <span className="ml-2 text-sm font-medium text-red-500">
-                  {error}
-                </span>
-              )}
-              <Button
-                className="mt-8 rounded-3xl"
-                text="Continue"
-                type="submit"
-                fullWidth
-                variant="primary"
+        <AuthForm
+          title="Create your account"
+          subTitle="Already registered?"
+          subTitleButton="Login Here"
+          subTitleButtonTwo="Connect Wallet"
+          onSubtitleButtonClick={() => navigate("/login")}
+          onSubtitleButtonTwoClick={() => {}}
+          isLogin={false}
+          showSocialLogin={true}
+          formFields={
+            <>
+              <InputField
+                type="email"
+                name="email"
+                placeholder="Email address"
+                value={email}
+                onChange={handleEmailChange}
+                required
+                label={""}
+                id={""}
               />
-            </form>
-          </div>
-        </div>
+            </>
+          }
+          onSubmit={handleEmailSubmit}
+          loading={false}
+          additionalLinks={
+            error && (
+              <span className="ml-2 text-sm font-medium text-red-500">
+                {error}
+              </span>
+            )
+          }
+        />
       </AuthLayout>
     </div>
   );

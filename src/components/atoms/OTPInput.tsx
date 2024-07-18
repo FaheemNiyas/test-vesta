@@ -32,27 +32,50 @@ const OTPInput = ({ isCorrect, length = 4, onComplete }: InputProps) => {
     <>
       <div className={`grid grid-cols-6 gap-5`}>
         {Array.from({ length }, (_, index) => (
-          <input
-            key={index}
-            type="text"
-            maxLength={1}
-            value={OTP[index]}
-            onChange={(e) => handleTextChange(e.target.value, index)}
-            ref={(ref) => (inputRef.current[index] = ref as HTMLInputElement)}
-            className={`border border-solid border-[#FFFFFF33] ${!OTP.includes("") && isCorrect && "border-[#05F691] text-[#05F691]"} ${!OTP.includes("") && !isCorrect && "border-[#FF3737] text-[#FF3737]"} bg-[#152743] md:rounded-xl rounded-md border-border-slate-500 text-center md:p-5 min-w-10 min-h-14 text-[24px]  outline-none`}
-          />
+          <div key={index} className="flex flex-col items-center">
+            <label htmlFor={`otp-input-${index}`} className="sr-only">{`Digit ${
+              index + 1
+            }`}</label>
+            <input
+              id={`otp-input-${index}`}
+              type="text"
+              maxLength={1}
+              value={OTP[index]}
+              onChange={(e) => handleTextChange(e.target.value, index)}
+              ref={(ref) => (inputRef.current[index] = ref as HTMLInputElement)}
+              placeholder="-"
+              title={`Digit ${index + 1}`}
+              className={`border border-solid border-[#FFFFFF33] ${
+                !OTP.includes("") &&
+                isCorrect &&
+                "border-[#05F691] text-[#05F691]"
+              } ${
+                !OTP.includes("") &&
+                !isCorrect &&
+                "border-[#FF3737] text-[#FF3737]"
+              } bg-[#152743] md:rounded-xl rounded-md border-border-slate-500 text-center md:p-5 min-w-10 min-h-14 text-[24px]  outline-none`}
+            />
+          </div>
         ))}
       </div>
-      {!OTP.includes("") && !isCorrect && <div className="flex flex-row text-[12px] items-center justify-start gap-2 text-[#FF3737] w-full !mt-2">
-        {" "}
-        <img className="w-[20px] h-[20px] bg-[#FF3737] rounded-full " />
-        Wrong code, try again !
-      </div>}
-      {!OTP.includes("") && isCorrect && <div className="flex flex-row text-[12px] items-center justify-start gap-2 text-[#05F691] w-full !mt-2">
-        {" "}
-        <img className="w-[20px] h-[20px] bg-[#05F691] rounded-full " />
-        The code is right
-      </div>}
+      {!OTP.includes("") && !isCorrect && (
+        <div className="flex flex-row text-[12px] items-center justify-start gap-2 text-[#FF3737] w-full !mt-2">
+          <img
+            alt="Error"
+            className="w-[20px] h-[20px] bg-[#FF3737] rounded-full "
+          />
+          Wrong code, try again!
+        </div>
+      )}
+      {!OTP.includes("") && isCorrect && (
+        <div className="flex flex-row text-[12px] items-center justify-start gap-2 text-[#05F691] w-full !mt-2">
+          <img
+            alt="Success"
+            className="w-[20px] h-[20px] bg-[#05F691] rounded-full "
+          />
+          The code is right
+        </div>
+      )}
     </>
   );
 };

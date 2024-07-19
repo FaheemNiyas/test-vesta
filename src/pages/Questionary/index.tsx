@@ -1,4 +1,3 @@
-import MainLayout from "@/layouts/MainLayout";
 import React, { useState } from "react";
 
 const Questionary = () => {

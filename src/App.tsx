@@ -7,8 +7,8 @@ import Profile from "./pages/Authentication/Profile/Profile";
 import GoogleAuthenticationPage from "./pages/GoogleAuthenticationPage";
 import SecurityOption from "./pages/Authentication/SecurityOption";
 import ConnectWallet from "./pages/ConnectWallet";
-import UserCompliance from "./pages/UserCompliance";
-import Questionary from "./pages/Questionary";
+import UserCompliance from "./pages/Authentication/UserCompliance";
+import Questionary from "./pages/Authentication/Questionary";
 import ReferralLinkPage from "./pages/ReferralLinkPage";
 import ResetPasswordPage from "./pages/Authentication/ResetPasswordPage";
 

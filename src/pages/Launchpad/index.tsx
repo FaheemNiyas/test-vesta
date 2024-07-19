@@ -1,8 +1,6 @@
-import MainLayout from '@/layouts/MainLayout'
-import React from 'react'
+import MainLayout from "@/layouts/MainLayout";
+import React from "react";
 
 export default function Launchpad() {
-  return (
-    <MainLayout>Launchpad</MainLayout>
-  )
+  return <MainLayout>Launchpad</MainLayout>;
 }

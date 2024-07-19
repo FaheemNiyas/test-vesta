@@ -27,6 +27,7 @@ const GoogleAuthenticationPage = () => {
         subtitle="Use your google authenticator"
       >
         <OptionalCard title="" isSkip={false} subTitle="" step={2}>
+          {/* QR COde */}
           <img alt="img" className="w-[130px] h-[130px] bg-white" />
           <div className="mt-4">
             <OtpInput

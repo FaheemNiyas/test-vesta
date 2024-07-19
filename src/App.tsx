@@ -11,6 +11,18 @@ import UserCompliance from "./pages/Authentication/UserCompliance";
 import Questionary from "./pages/Authentication/Questionary";
 import ReferralLinkPage from "./pages/ReferralLinkPage";
 import ResetPasswordPage from "./pages/Authentication/ResetPasswordPage";
+import Career from "./pages/Community/Career";
+import LearnMore from "./pages/Community/LearnMore";
+import News from "./pages/Community/News";
+import Launchpad from "./pages/Launchpad";
+import BrowseNFT from "./pages/Marketplace/BrowseNFT";
+import Collection from "./pages/Marketplace/Collection";
+import Activity from "./pages/Stats/Activity";
+import Analytics from "./pages/Stats/Analytics";
+import Dashboard from "./pages/Stats/Dashboard";
+import OnOffRamp from "./pages/Stats/OnOffRamp";
+import Rankings from "./pages/Stats/Rankings";
+import Swap from "./pages/Stats/Swap";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/Authentication/LoginPage"));
@@ -71,6 +83,26 @@ const App = () => {
             <Route path="/questionary" element={<Questionary />} />
 
             <Route path="/referral-link" element={<ReferralLinkPage />} />
+
+            {/* Stats Routes */}
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/analytics" element={<Analytics />} />
+            <Route path="/swap" element={<Swap />} />
+            <Route path="/ramp" element={<OnOffRamp />} />
+            <Route path="/rankings" element={<Rankings />} />
+            <Route path="/activity" element={<Activity />} />
+
+            {/* Marketplace Routes */}
+            <Route path="/browse-nft" element={<BrowseNFT />} />
+            <Route path="/collection" element={<Collection />} />
+
+            {/* Marketplace Routes */}
+            <Route path="/launchpad" element={<Launchpad />} />
+
+            {/* Community Routes */}
+            <Route path="/news" element={<News />} />
+            <Route path="/career" element={<Career />} />
+            <Route path="/learn-more" element={<LearnMore />} />
 
             {/* Main Routes */}
             <Route element={<ProtectedRoute />}>

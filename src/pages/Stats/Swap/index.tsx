@@ -1,7 +1,8 @@
+import MainLayout from '@/layouts/MainLayout'
 import React from 'react'
 
 export default function Swap() {
   return (
-    <div>Swap</div>
+    <MainLayout>Swap</MainLayout>
   )
 }

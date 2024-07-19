@@ -1,7 +1,8 @@
+import MainLayout from '@/layouts/MainLayout'
 import React from 'react'
 
 export default function BrowseNFT() {
   return (
-    <div>BrowseNFT</div>
+    <MainLayout>BrowseNFT</MainLayout>
   )
 }

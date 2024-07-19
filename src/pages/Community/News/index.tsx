@@ -1,7 +1,8 @@
+import MainLayout from '@/layouts/MainLayout'
 import React from 'react'
 
 export default function News() {
   return (
-    <div>News</div>
+    <MainLayout>News</MainLayout>
   )
 }

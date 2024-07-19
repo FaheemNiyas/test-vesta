@@ -1,7 +1,8 @@
+import MainLayout from '@/layouts/MainLayout'
 import React from 'react'
 
 export default function LearnMore() {
   return (
-    <div>LearnMore</div>
+    <MainLayout>LearnMore</MainLayout>
   )
 }

@@ -1,7 +1,8 @@
+import MainLayout from '@/layouts/MainLayout'
 import React from 'react'
 
 export default function Career() {
   return (
-    <div>Career</div>
+    <MainLayout>Career</MainLayout>
   )
 }

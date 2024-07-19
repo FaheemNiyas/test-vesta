@@ -1,7 +1,8 @@
+import MainLayout from '@/layouts/MainLayout'
 import React from 'react'
 
 export default function Activity() {
   return (
-    <div>Activity</div>
+    <MainLayout>Activity</MainLayout>
   )
 }

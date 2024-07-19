@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useWeb3Modal } from "@web3modal/wagmi/react";
 import { useAccount } from "wagmi";
+import { UserProfile, VestaLogo, WalletIcon } from "@/constants";
 
 const Navbar = () => {
   const { isConnected } = useAccount();
@@ -77,7 +78,7 @@ const Navbar = () => {
           </svg>
         </button>
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img className="h-8 bg-white w-50" alt="Vesta Logo" />
+          <img src={VestaLogo} className="h-8 w-50" alt="Vesta Logo" />
         </a>
 
         <div className="flex gap-2 space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
@@ -90,7 +91,7 @@ const Navbar = () => {
                 onClick={onConnectClick}
                 className="hidden md:flex flex-row justify-center items-center gap-5 rounded-full text-sm px-10 py-2 text-center bg-[#05F691] text-black"
               >
-                <img alt="img" className="w-5 h-5 bg-white" /> Connect
+                <img alt="img" src={WalletIcon} className="w-5 h-5" /> Connect
               </button>
 
               <button
@@ -98,7 +99,7 @@ const Navbar = () => {
                 onClick={onConnectClick}
                 className="md:hidden flex flex-row justify-center items-center gap-5 rounded-full text-sm py-2 text-center bg-[#ffffff00] text-black"
               >
-                <img alt="img" className="w-5 h-5 bg-white" />
+                <img src={WalletIcon} alt="img" className="w-5 h-5 " />
               </button>
             </>
           )}
@@ -107,7 +108,12 @@ const Navbar = () => {
               type="button"
               className="flex flex-row justify-center items-center gap-5 rounded-full text-sm px-3 py-2 text-center bg-[#234272] text-white"
             >
-              93xn38c3 <img alt="img" className="w-5 h-5 bg-white" />
+              John435
+              <img
+                alt="img"
+                src={UserProfile}
+                className="w-5 h-5 rounded-full"
+              />
             </button>
           </div>
         </div>

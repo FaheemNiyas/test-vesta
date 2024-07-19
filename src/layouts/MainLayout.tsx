@@ -14,7 +14,7 @@ const MainLayout = ({ children }: HomeLayoutProps) => {
           </div> */}
         </div>
       </header>
-      <main className="flex-1 md:p-8 p-4 pt-6 space-y-4">{children}</main>
+      <main className="flex-1 p-4 pt-6 space-y-4 md:p-8">{children}</main>
       <footer>
         <Footer />
       </footer>

@@ -51,7 +51,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-[#1C355D] fixed w-full z-20 top-0 start-0">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
         <button
           type="button"
           className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-[#FFFFFF0D] focus:outline-none focus:ring-2 focus:ring-gray-200"
@@ -77,10 +77,10 @@ const Navbar = () => {
           </svg>
         </button>
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img className="h-8 w-50 bg-white" alt="Vesta Logo" />
+          <img className="h-8 bg-white w-50" alt="Vesta Logo" />
         </a>
 
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2">
+        <div className="flex gap-2 space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
           {isConnected ? (
             <w3m-button />
           ) : (
@@ -90,7 +90,7 @@ const Navbar = () => {
                 onClick={onConnectClick}
                 className="hidden md:flex flex-row justify-center items-center gap-5 rounded-full text-sm px-10 py-2 text-center bg-[#05F691] text-black"
               >
-                <img className="w-5 h-5 bg-white" /> Connect
+                <img alt="img" className="w-5 h-5 bg-white" /> Connect
               </button>
 
               <button
@@ -98,27 +98,27 @@ const Navbar = () => {
                 onClick={onConnectClick}
                 className="md:hidden flex flex-row justify-center items-center gap-5 rounded-full text-sm py-2 text-center bg-[#ffffff00] text-black"
               >
-                <img className="w-5 h-5 bg-white" />
+                <img alt="img" className="w-5 h-5 bg-white" />
               </button>
             </>
           )}
-          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse gap-2">
-          <button
-            type="button"
-            className="flex flex-row justify-center items-center gap-5 rounded-full text-sm px-3 py-2 text-center bg-[#234272] text-white"
-          >
-            93xn38c3 <img className="w-5 h-5 bg-white" />
-          </button>
+          <div className="flex gap-2 space-x-3 md:order-2 md:space-x-0 rtl:space-x-reverse">
+            <button
+              type="button"
+              className="flex flex-row justify-center items-center gap-5 rounded-full text-sm px-3 py-2 text-center bg-[#234272] text-white"
+            >
+              93xn38c3 <img alt="img" className="w-5 h-5 bg-white" />
+            </button>
+          </div>
         </div>
-        </div>
-        
+
         <div
           className={`${
             isMenuOpen ? "block" : "hidden"
           } items-center justify-between w-full md:flex md:w-auto md:order-1`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
+          <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
             {navComponents.map((navComponent, index) => {
               return (
                 <li className="relative group !cursor-pointer" key={index}>

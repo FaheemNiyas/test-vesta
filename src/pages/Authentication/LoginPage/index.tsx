@@ -63,12 +63,14 @@ const LoginPage: React.FC = () => {
           onSubmit={handleFormSubmit}
           loading={loading}
           additionalLinks={
-            <button
-              onClick={() => navigate("/forgot-password")}
-              className="flex items-center justify-center pt-4 text-xs font-medium underline text-primary sm:text-sm"
-            >
-              Forgot password?
-            </button>
+            <div className="flex justify-center">
+              <button
+                onClick={() => navigate("/forgot-password")}
+                className="flex items-center justify-center pt-4 text-xs font-medium underline text-primary sm:text-sm"
+              >
+                Forgot password?
+              </button>
+            </div>
           }
         />
       </AuthLayout>

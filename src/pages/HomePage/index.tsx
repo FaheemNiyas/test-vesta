@@ -1,9 +1,12 @@
 import MainLayout from '@/layouts/MainLayout';
+import LandingPage from './Components/LandingPage';
 
 const HomePage = () => {
   return (
     <>
-      <MainLayout>HomePage</MainLayout>
+      <MainLayout>
+        <LandingPage/>
+      </MainLayout>
     </>
   );
 };

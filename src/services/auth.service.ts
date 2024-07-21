@@ -126,7 +126,11 @@ export const useSocialMediaLoginCallback = () => {
 };
 
 export const useLoginSuccess = () => {
-  return useMutation(() => authApi.get("/login/success"));
+  return useMutation(() =>
+    authApi.get("/login/success", {
+      withCredentials: true,
+    })
+  );
 };
 
 export const useLogoutUser = () => {

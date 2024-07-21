@@ -11,7 +11,7 @@ const Profile: React.FC = () => {
   const [formData, setFormData] = useState({
     fname: "",
     lname: "",
-    email: "",
+    email: localStorage.getItem("email") || "",
     password: "",
   });
   const [loading, setLoading] = useState(false);

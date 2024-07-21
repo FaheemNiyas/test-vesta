@@ -3,11 +3,22 @@ import AuthLayout from "@/layouts/AuthLayout";
 import AuthForm from "@/components/organisms/AuthForm";
 import { useNavigate } from "react-router-dom";
 import InputField from "@/components/atoms/InputField";
+import { useLoginUser } from "@/services/auth.service";
+import { useToast } from "@/providers/ToastProvider";
+import { useCookies } from "react-cookie";
+import useUserStore from "@/store/user";
+import useProfileStore from "@/store/profile";
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
+
+  const [_, setCookie] = useCookies(["JwtToken"]);
+  const userState = useUserStore();
+  const profileStore = useProfileStore();
+  const loginMutation = useLoginUser();
+  const { success, error } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -15,10 +26,34 @@ const LoginPage: React.FC = () => {
   };
 
   const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
     setLoading(true);
-    // Handle login logic
-    setLoading(false);
+    e.preventDefault();
+    loginMutation.mutate(formData, {
+      onSuccess: (res) => {
+        if (res?.data?.data?.token) {
+          setCookie("JwtToken", res?.data?.data?.token);
+          userState.setData(res?.data?.data);
+          const userData = res?.data?.data;
+          profileStore.setId(userData.id);
+          profileStore.setFName(userData.fname || "");
+          profileStore.setLName(userData.lname || "");
+          profileStore.setProfileImage(userData.profileImage || null);
+          navigate("/");
+          success("Login successful!");
+        } else {
+          error("Login failed! Please try again.");
+        }
+        setLoading(false);
+      },
+      onError: (err: any) => {
+        console.log("err : ", err);
+        const errorMessage =
+          err?.response?.data?.error ||
+          "Login failed! Please check your credentials.";
+        error(errorMessage);
+        setLoading(false);
+      },
+    });
   };
 
   return (

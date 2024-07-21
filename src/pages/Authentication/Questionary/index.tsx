@@ -1,7 +1,13 @@
+import { useUserUpdate } from "@/services/auth.service";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@/providers/ToastProvider";
 
 const Questionary = () => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
+  const useUserUpdateMutation = useUserUpdate();
+  const navigate = useNavigate();
+  const { success, error } = useToast();
 
   const questions = [
     {
@@ -162,6 +168,22 @@ const Questionary = () => {
 
   const handleSubmit = () => {
     console.log("Selected Answers:", selectedAnswers);
+    useUserUpdateMutation.mutate(
+      {
+        email: localStorage.getItem("email") || "",
+        questionnaryResponse: selectedAnswers,
+      },
+      {
+        onSuccess: () => {
+          success("Questionary submitted successfully");
+          navigate("/user-compliance");
+        },
+        onError: (e) => {
+          console.error(e);
+          error(e.message || "Failed to submit questionary");
+        },
+      }
+    );
   };
 
   return (

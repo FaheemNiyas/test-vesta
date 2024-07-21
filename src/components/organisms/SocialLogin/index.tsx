@@ -4,7 +4,7 @@ import { appleIcon, facebookIcon, googleIcon, twitterIcon } from "@/constants";
 const SocialLogin = () => {
   const handleSocialLogin = (provider: string) => {
     window.location.href = `${
-      import.meta.env.VITE_AUTH_API_URI
+      import.meta.env.VITE_AUTH_API_URI || "http://localhost:3000"
     }/api/v1/auth/by/${provider}`;
   };
 

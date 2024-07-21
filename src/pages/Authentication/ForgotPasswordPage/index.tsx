@@ -3,10 +3,14 @@ import AuthLayout from "@/layouts/AuthLayout";
 import OptionalCard from "@/components/organisms/OptionalCard";
 import Button from "@/components/atoms/Button";
 import InputField from "@/components/atoms/InputField";
+import { useForgotPassword } from "@/services/auth.service";
+import { useToast } from "@/providers/ToastProvider";
 
 const ForgotPasswordPage = () => {
   const [formData, setFormData] = useState({ email: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const useForgotPasswordMutation = useForgotPassword();
+  const { success, error } = useToast();
 
   const handleInputChange = (e: any) => {
     const { name, value } = e.target;
@@ -21,14 +25,15 @@ const ForgotPasswordPage = () => {
     setIsSubmitting(true);
 
     try {
-      // Replace with your API call to send the reset link
-      // if (response.ok) {
-      //   // Handle success (e.g., show a success message)
-      //   alert("Reset link sent to your email.");
-      // } else {
-      //   // Handle error
-      //   alert("Failed to send reset link.");
-      // }
+      useForgotPasswordMutation.mutate(formData, {
+        onSuccess: () => {
+          success("Reset link sent successfully");
+        },
+        onError: (e) => {
+          console.error("Error sending reset link:", e);
+          error("An error occurred. Please try again later.");
+        },
+      });
     } catch (error) {
       console.error("Error sending reset link:", error);
       alert("An error occurred. Please try again later.");

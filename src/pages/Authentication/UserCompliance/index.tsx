@@ -1,11 +1,38 @@
 import Button from "@/components/atoms/Button";
 import OptionalCard from "@/components/organisms/OptionalCard";
 import AuthLayout from "@/layouts/AuthLayout";
-import React from "react";
+import { useToast } from "@/providers/ToastProvider";
+import { useUserUpdate } from "@/services/auth.service";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserCompliance = () => {
   const navigate = useNavigate();
+  const [checked, setChecked] = useState(false);
+  const useUserUpdateMutation = useUserUpdate();
+  const { success, error } = useToast();
+
+  const onSubmit = () => {
+    if (checked) {
+      useUserUpdateMutation.mutate(
+        {
+          email: localStorage.getItem("email") || "",
+          termsAndConditions: true,
+        },
+        {
+          onSuccess: () => {
+            success("User registration fully completed");
+            navigate("/");
+          },
+          onError: (e) => {
+            error(e.message || "Failed to complete registration");
+            console.error(e);
+          },
+        }
+      );
+    }
+  };
+
   return (
     <div className="relative h-min-screen pt-30">
       <AuthLayout title="" subtitle="">
@@ -22,6 +49,11 @@ const UserCompliance = () => {
               type="checkbox"
               value=""
               className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded "
+              onChange={(e) => {
+                console.log("e target:::", e.target.checked);
+                console.log("e:::", e);
+                setChecked(e.target.checked);
+              }}
             />
             <label
               htmlFor="default-checkbox"
@@ -44,7 +76,7 @@ const UserCompliance = () => {
             type="submit"
             fullWidth
             variant="custom"
-            onClick={() => navigate("/google-authentication")}
+            onClick={onSubmit}
           />
         </OptionalCard>
       </AuthLayout>

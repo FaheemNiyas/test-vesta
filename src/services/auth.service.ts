@@ -9,6 +9,15 @@ type RegisterData = {
   role: "USER";
 };
 
+type GAuthData = {
+  email: string;
+};
+
+type GAuthVerifyData = {
+  email: string;
+  verificationCode: string;
+};
+
 type ForgotPasswordData = {
   email: string;
 };
@@ -21,6 +30,7 @@ type ResetPasswordData = {
 
 type EmailVerifyCodeData = {
   email: string;
+  isSignup: boolean;
 };
 
 type VerifyData = {
@@ -42,13 +52,41 @@ type QuestionaryData = {
 
 export const useRegisterUser = () => {
   return useMutation((userData: RegisterData) =>
-    authApi.post("/register", userData)
+    authApi.post("/register", userData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+    })
+  );
+};
+
+export const useGoogleAuth = () => {
+  return useMutation((userData: GAuthData) =>
+    authApi.post("/generate-gauth", userData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+    })
+  );
+};
+
+export const useVerifyGoogleAuth = () => {
+  return useMutation((userData: GAuthVerifyData) =>
+    authApi.post("/verify-gauth", userData)
   );
 };
 
 export const useEmailVerifyCode = () => {
   return useMutation((userData: EmailVerifyCodeData) =>
     authApi.post("/email-verifycode", userData)
+  );
+};
+
+export const useEmail2FAVerifyCode = () => {
+  return useMutation((userData: EmailVerifyCodeData) =>
+    authApi.post("/email-2fa-verifycode", userData)
   );
 };
 
@@ -88,7 +126,11 @@ export const useSocialMediaLoginCallback = () => {
 };
 
 export const useLoginSuccess = () => {
-  return useMutation(() => authApi.get("/login/success"));
+  return useMutation(() =>
+    authApi.get("/login/success", {
+      withCredentials: true,
+    })
+  );
 };
 
 export const useLogoutUser = () => {
@@ -98,5 +140,16 @@ export const useLogoutUser = () => {
 export const useQuestionary = () => {
   return useMutation((userData: QuestionaryData) =>
     authApi2.post("/questionary/save", userData)
+  );
+};
+
+export const useUserUpdate = () => {
+  return useMutation((userData: any) =>
+    authApi2.patch("/user/update", userData, {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+    })
   );
 };

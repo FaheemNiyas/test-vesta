@@ -1,103 +1,57 @@
-import { useState, ChangeEvent, FormEvent } from "react";
-import AuthLayout from "@/layouts/AuthLayout";
-import OptionalCard from "@/components/organisms/OptionalCard";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Button from "@/components/atoms/Button";
 import InputField from "@/components/atoms/InputField";
+import OptionalCard from "@/components/organisms/OptionalCard";
+import AuthLayout from "@/layouts/AuthLayout";
 
-interface FormData {
-  password: string;
-  confirmPassword: string;
-}
+const ReferralLinkPage = () => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({ referral: "" });
 
-const ResetPasswordPage = () => {
-  const [formData, setFormData] = useState<FormData>({
-    password: "",
-    confirmPassword: "",
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState("");
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData((prevState) => ({
-      ...prevState,
+    setFormData((prevFormData) => ({
+      ...prevFormData,
       [name]: value,
     }));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleReferral = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError("");
-
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
-    setIsSubmitting(true);
-
-    try {
-      // Replace with your API call to reset the password
-      const response = await fetch("/api/reset-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ password: formData.password }),
-      });
-
-      if (response.ok) {
-        // Handle success (e.g., show a success message, redirect to login page)
-        alert("Password reset successfully.");
-      } else {
-        // Handle error
-        const errorData = await response.json();
-        setError(errorData.message || "Failed to reset password.");
-      }
-    } catch (error) {
-      console.error("Error resetting password:", error);
-      setError("An error occurred. Please try again later.");
-    }
-
-    setIsSubmitting(false);
+    console.log("Referral Link Submitted:", formData.referral);
   };
 
   return (
     <div className="relative h-min-screen pt-30">
       <AuthLayout
-        title="Reset Password"
-        subtitle="Enter a new password and make sure to record it in a safe place."
+        title="Have you been invited by someone?"
+        subtitle="If you have referral links from a friend, please input it here"
       >
-        <OptionalCard title="Enter New Password" isSkip={false} isSteps={false}>
-          <form onSubmit={handleSubmit} className="flex flex-col w-full gap-4">
+        <OptionalCard
+          title="Referral Link"
+          isSkip={true}
+          subTitle="Paste their referral link into the field below."
+          step={1}
+          onSkipNow={() => navigate("/security-option")}
+        >
+          <form onSubmit={handleReferral} className="w-full">
             <InputField
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={formData.password}
+              type="text"
+              name="referral"
+              placeholder="Referral Link"
+              value={formData.referral}
               onChange={handleInputChange}
               required
               label=""
-              id="password"
+              id="referral"
             />
-            <InputField
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              value={formData.confirmPassword}
-              onChange={handleInputChange}
-              required
-              label=""
-              id="confirmPassword"
-            />
-            {error && <p className="mt-2 text-red-500">{error}</p>}
             <Button
-              className="mt-8 bg-primary !text-black !rounded-full md:py-3 text-[16px] font-semibold"
-              text={isSubmitting ? "Sending..." : "Confirm New Password"}
+              className="mt-8 bg-white !text-black !rounded-full  text-[16px] font-semibold"
+              text="Use Referral"
               type="submit"
               fullWidth
               variant="custom"
-              disabled={isSubmitting}
             />
           </form>
         </OptionalCard>
@@ -106,4 +60,4 @@ const ResetPasswordPage = () => {
   );
 };
 
-export default ResetPasswordPage;
+export default ReferralLinkPage;

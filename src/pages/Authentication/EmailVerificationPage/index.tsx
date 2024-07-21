@@ -1,5 +1,5 @@
 import VerificationStatus from "@/components/organisms/EmailVerify";
-import { SuccessIcon } from "@/constants";
+import { VestaRoundedLogo } from "@/constants";
 
 import AuthLayout from "@/layouts/AuthLayout";
 import { useToast } from "@/providers/ToastProvider";
@@ -74,7 +74,7 @@ const EmailVerificationPage = () => {
         subtitle="Verify your email for account creation"
       >
         <VerificationStatus
-          imageSrc={SuccessIcon}
+          imageSrc={VestaRoundedLogo}
           imageAlt={"successIcon"}
           secondaryTitle={"Enter Code"}
           secondaryText={

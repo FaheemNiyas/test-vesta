@@ -1,11 +1,12 @@
+import React from "react";
 import Button from "@/components/atoms/Button";
 import OptionalCard from "@/components/organisms/OptionalCard";
 import AuthLayout from "@/layouts/AuthLayout";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 
-const SecurityOption = () => {
+const SecurityOption: React.FC = () => {
   const navigate = useNavigate();
+
   return (
     <div className="relative h-min-screen pt-30">
       <AuthLayout

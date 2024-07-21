@@ -28,7 +28,7 @@ const UserCompliance = () => {
               className="ms-2 md:text-[12px] text-[8px] font-medium text-gray-900 dark:text-gray-300 "
             >
               By connecting your wallet and using Vesta, you agree to our Term
-              of service and Pririvacy Policy on our platform
+              of service and Privacy Policy on our platform
             </label>
           </div>
           <Button

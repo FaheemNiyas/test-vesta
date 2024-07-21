@@ -3,10 +3,9 @@ import Button from "@/components/atoms/Button";
 import OtpInput from "@/components/molecules/OtpInput";
 import { VerificationStatusProps } from "@/types";
 import { FormEvent } from "react";
+import { VestaRoundedLogo } from "@/constants";
 
 const VerificationStatus = ({
-  imageSrc,
-  imageAlt,
   secondaryTitle,
   secondaryText,
 }: VerificationStatusProps) => {
@@ -60,15 +59,13 @@ const VerificationStatus = ({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full max-w-sm p-8 space-y-8 border shadow bg-gradient-to-br from-slate-800/40 to-stone-300/30 rounded-2xl border-primary">
+    <div className="max-w-xs sm:max-w-md md:max-w-lg lg:max-w-full w-full sm:w-[480px] bg-[#1C355D]/80 rounded-2xl shadow border border-[#FFFFFF4D] flex flex-col justify-center items-center p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
       <div className="flex items-center justify-center space-x-4">
-        <div className="relative w-32 h-32 bg-white border border-white rounded-full md:w-32 md:h-32 bg-opacity-5 border-opacity-20">
-          <img
-            alt={imageAlt}
-            className="absolute w-1/2 h-1/2 top-1/4 left-1/4"
-            src={imageSrc}
-          />
-        </div>
+        <img
+          alt="VestaRoundedLogo"
+          src={VestaRoundedLogo}
+          className="w-20 h-20 bg-white rounded-full"
+        />
       </div>
       <div className="space-y-4 text-center text-white">
         <h2 className="text-lg md:text-lg lg:text-lg font-semibold font-['Poppins']">

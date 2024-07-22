@@ -4,6 +4,9 @@ import OtpInput from "@/components/molecules/OtpInput";
 import { VerificationStatusProps } from "@/types";
 import { FormEvent } from "react";
 import { VestaRoundedLogo } from "@/constants";
+import { useVerifyUser, useEmail2FAVerifyCode } from "@/services/auth.service";
+import { useToast } from "@/providers/ToastProvider";
+import { useNavigate } from "react-router-dom";
 
 const VerificationStatus = ({
   secondaryTitle,
@@ -11,7 +14,12 @@ const VerificationStatus = ({
 }: VerificationStatusProps) => {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const [timer, setTimer] = useState<number>(154); // 2 minutes and 34 seconds
+  const [loading, setLoading] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+  const verifyUserMutation = useVerifyUser();
+  const { success, error } = useToast();
+  const emailVerifyCodeMutation = useEmail2FAVerifyCode();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -30,31 +38,70 @@ const VerificationStatus = ({
     )}`;
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Mock validation for OTP
-    const correctOtp = "123456";
-    setIsCorrect(otp.join("") === correctOtp);
-    console.log("OTP Submitted:", otp.join(""));
+    const otpassword = (await handlePasteFromClipboard()) as string[];
+
+    verifyUserMutation.mutate(
+      {
+        code: otpassword?.join("") || "",
+        email: localStorage.getItem("email") || "",
+      },
+      {
+        onSuccess: (res) => {
+          success("Email verified successfully");
+          console.log("res", res);
+          localStorage.getItem("jwt") && localStorage.removeItem("jwt");
+          localStorage.setItem("jwt", res.data.data.jwt);
+          setLoading(false);
+          navigate("/profile");
+        },
+        onError: (err) => {
+          error("Failed");
+          console.error("Error:", err);
+          setLoading(false);
+        },
+      }
+    );
   };
 
-  const handlePasteFromClipboard = async () => {
-    try {
-      const text = await navigator.clipboard.readText();
-      if (/^\d{6}$/.test(text)) {
-        const newOtp = text.split("");
-        setOtp(newOtp);
-      } else {
-        alert("Clipboard does not contain a valid 6-digit OTP");
-      }
-    } catch (err) {
-      console.error("Failed to read clipboard contents: ", err);
-    }
+  const handlePasteFromClipboard = () => {
+    return new Promise((resolve, reject) => {
+      navigator.clipboard
+        .readText()
+        .then((text) => {
+          if (/^[0-9a-zA-Z]{6}$/.test(text)) {
+            const newOtp = text.split("");
+            setOtp(newOtp);
+            resolve(newOtp);
+          } else {
+            alert("Clipboard does not contain a valid 6-digit OTP");
+            reject();
+          }
+        })
+        .catch((err) => {
+          console.error("Failed to read clipboard contents: ", err);
+          reject();
+        });
+    });
   };
 
   const handleResendCode = () => {
-    // Handle resend code logic here
-    console.log("Resend Code Clicked");
+    const email = localStorage.getItem("email") || "";
+    emailVerifyCodeMutation.mutate(
+      { email, isSignup: false },
+      {
+        onSuccess: () => {
+          success("Email sent successfully");
+          setLoading(false);
+        },
+        onError: (err) => {
+          error("Failed");
+          console.error("Error:", err);
+          setLoading(false);
+        },
+      }
+    );
     setTimer(154); // Reset the timer
   };
 
@@ -103,9 +150,8 @@ const VerificationStatus = ({
         <Button
           text={"Paste from Clipboard"}
           width="w-full"
-          type="button"
+          type="submit"
           bgColor={"bg-white"}
-          onClick={handlePasteFromClipboard}
           variant="custom"
           textColor="text-black"
           className="rounded-3xl"

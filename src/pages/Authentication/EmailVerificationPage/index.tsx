@@ -49,7 +49,7 @@ const EmailVerificationPage = () => {
     const email = localStorage.getItem("registeredEmail") || "";
     if (email) {
       emailVerifyCodeMutation.mutate(
-        { email: email },
+        { email: email, isSignup: false },
         {
           onSuccess: (res) => {
             console.log(res);

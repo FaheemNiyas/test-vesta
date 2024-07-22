@@ -3,14 +3,33 @@ import OptionalCard from "@/components/organisms/OptionalCard";
 import AuthLayout from "@/layouts/AuthLayout";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from "wagmi";
+import { useUserUpdate } from "@/services/auth.service";
+import { useToast } from "@/providers/ToastProvider";
 
 const ConnectWallet: React.FC = () => {
   const navigate = useNavigate();
-  const { isConnected } = useAccount();
+  const { isConnected, address } = useAccount();
+  const useUserUpdateMutation = useUserUpdate();
+  const { success, error } = useToast();
 
   useEffect(() => {
     if (isConnected) {
-      navigate("/questionary");
+      useUserUpdateMutation.mutate(
+        {
+          email: localStorage.getItem("email") || "",
+          address,
+        },
+        {
+          onSuccess: () => {
+            success("Wallet connected successfully");
+            navigate("/questionary");
+          },
+          onError: (e) => {
+            error(e.message || "Failed to connect wallet");
+            console.error(e);
+          },
+        }
+      );
     }
   }, [isConnected, navigate]);
 

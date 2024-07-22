@@ -2,19 +2,35 @@ import OptionalCard from "@/components/organisms/OptionalCard";
 import AuthLayout from "@/layouts/AuthLayout";
 import { useState } from "react";
 import OtpInput from "@/components/molecules/OtpInput";
+import { useVerifyGoogleAuth } from "@/services/auth.service";
+import { useNavigate } from "react-router-dom";
 
 const GoogleAuthenticationPage = () => {
   const [otp, setOtp] = useState<string[]>(Array(6).fill(""));
   const [isCorrect, setCorrect] = useState<boolean | null>(null);
+  const useVerifyGAuthMutation = useVerifyGoogleAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = (pin: string) => {
-    // handle api request here but I'm console logging it
-    console.log(pin);
-    setCorrect(pin === "000000");
+    useVerifyGAuthMutation.mutate(
+      { email: localStorage.getItem("email") || "", verificationCode: pin },
+      {
+        onSuccess: (res) => {
+          console.log(res);
+          setCorrect(true);
+          navigate("/connect-wallet");
+        },
+        onError: (error) => {
+          console.log(error);
+          setCorrect(false);
+        },
+      }
+    );
   };
 
   const handleOtpChange = (value: string[]) => {
     setOtp(value);
+    setCorrect(null);
     if (!value.includes("")) {
       handleSubmit(value.join(""));
     }
@@ -28,7 +44,11 @@ const GoogleAuthenticationPage = () => {
       >
         <OptionalCard title="" isSkip={false} subTitle="" step={2}>
           {/* QR COde */}
-          <img alt="img" className="w-[130px] h-[130px] bg-white" />
+          <img
+            alt="img"
+            className="w-[130px] h-[130px] bg-white"
+            src={localStorage.getItem("googleAuth") || ""}
+          />
           <div className="mt-4">
             <OtpInput
               value={otp}

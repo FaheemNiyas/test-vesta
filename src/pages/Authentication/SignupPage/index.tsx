@@ -3,11 +3,16 @@ import AuthLayout from "@/layouts/AuthLayout";
 import { useNavigate } from "react-router-dom";
 import AuthForm from "@/components/organisms/AuthForm";
 import InputField from "@/components/atoms/InputField";
+import { useEmail2FAVerifyCode } from "@/services/auth.service";
+import { useToast } from "@/providers/ToastProvider";
 
 const SignupPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const emailVerifyCodeMutation = useEmail2FAVerifyCode();
   const navigate = useNavigate();
+  const { success } = useToast();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
@@ -17,7 +22,24 @@ const SignupPage: React.FC = () => {
     e.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(email)) {
-      navigate("/email-verification", { state: { email } });
+      setLoading(true);
+
+      emailVerifyCodeMutation.mutate(
+        { email, isSignup: true },
+        {
+          onSuccess: () => {
+            success("Email sent successfully");
+            localStorage.setItem("email", email);
+            setLoading(false);
+            navigate("/email-verification", { state: { email } });
+          },
+          onError: (err) => {
+            setError("Failed");
+            console.error("Error:", err);
+            setLoading(false);
+          },
+        }
+      );
     } else {
       setError("Invalid email address");
     }

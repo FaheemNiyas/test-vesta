@@ -3,6 +3,9 @@ import AuthLayout from "@/layouts/AuthLayout";
 import OptionalCard from "@/components/organisms/OptionalCard";
 import Button from "@/components/atoms/Button";
 import InputField from "@/components/atoms/InputField";
+import { useResetPassword } from "@/services/auth.service";
+import { useToast } from "@/providers/ToastProvider";
+import { useNavigate } from "react-router-dom";
 
 interface FormData {
   password: string;
@@ -16,6 +19,9 @@ const ResetPasswordPage = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
+  const useResetPasswordMutation = useResetPassword();
+  const { success } = useToast();
+  const navigate = useNavigate();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -28,32 +34,36 @@ const ResetPasswordPage = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setError("");
+    setIsSubmitting(true);
 
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
       return;
     }
 
-    setIsSubmitting(true);
+    // get token from query params
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get("token");
+    if (!token) {
+      setError("Invalid reset link.");
+      return;
+    }
 
     try {
-      // Replace with your API call to reset the password
-      const response = await fetch("/api/reset-password", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ password: formData.password }),
-      });
-
-      if (response.ok) {
-        // Handle success (e.g., show a success message, redirect to login page)
-        alert("Password reset successfully.");
-      } else {
-        // Handle error
-        const errorData = await response.json();
-        setError(errorData.message || "Failed to reset password.");
-      }
+      useResetPasswordMutation.mutate(
+        { ...formData, token },
+        {
+          onSuccess: () => {
+            console.log("Password reset successful");
+            success("Password reset successfully");
+            navigate("/login");
+          },
+          onError: (e) => {
+            console.error("Error resetting password:", e);
+            setError("An error occurred. Please try again later.");
+          },
+        }
+      );
     } catch (error) {
       console.error("Error resetting password:", error);
       setError("An error occurred. Please try again later.");

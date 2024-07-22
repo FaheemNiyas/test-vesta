@@ -4,6 +4,7 @@ import OptionalCard from "@/components/organisms/OptionalCard";
 import AuthLayout from "@/layouts/AuthLayout";
 import { useNavigate } from "react-router-dom";
 import { useGoogleAuth } from "@/services/auth.service";
+import { carbonSecurityIcon } from "@/constants";
 
 const SecurityOption: React.FC = () => {
   const navigate = useNavigate();
@@ -44,7 +45,11 @@ const SecurityOption: React.FC = () => {
           <div className="w-full bg-[#223F6C] p-3 md:p-7 rounded-3xl shadow-md">
             <div className="flex flex-row">
               <div className="w-1/6">
-                <img alt="img" className="w-10 h-10 bg-white" />
+                <img
+                  src={carbonSecurityIcon}
+                  alt="img"
+                  className="w-10 h-10 "
+                />
               </div>
               <div className="flex flex-col w-auto gap-2 px-3 md:gap-5 ">
                 <div className="md:text-[15px] text-[12px]">

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { InputFieldProps } from "@/types";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import Button from "./Button";
 
 const InputField = ({
   label,
@@ -13,6 +14,8 @@ const InputField = ({
   wrapperClass = "",
   contentClass = "",
   onChange,
+  onSubmit,
+  doneIcon,
 }: InputFieldProps) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -40,14 +43,6 @@ const InputField = ({
               name={name}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
               onChange={onChange}
-              // onChange={(e) => {
-              //   const fileName = e.target.files?.[0]?.name;
-              //   if (fileName) {
-              //     e.currentTarget.previousElementSibling.textContent = fileName;
-              //   } else {
-              //     e.currentTarget.previousElementSibling.textContent = placeholder;
-              //   }
-              // }}
             />
           </div>
         </label>
@@ -74,6 +69,7 @@ const InputField = ({
             onChange={onChange}
             required={required}
             className={`${contentClass} w-full px-4 py-3 bg-white bg-opacity-5 rounded-3xl border border-white border-opacity-10 text-sm font-medium font-Inter`}
+            disabled={type === "verified-email"}
           />
           {type === "password" && (
             <button
@@ -83,6 +79,25 @@ const InputField = ({
             >
               {isPasswordVisible ? <FaEyeSlash /> : <FaEye />}
             </button>
+          )}
+          {type === "register-email" && onSubmit && (
+            <Button
+              text="Next"
+              width="w-[101px]"
+              textColor="text-slate-800"
+              className="absolute py-1 text-white transform -translate-y-1/2 right-2 top-1/2 text-opacity-70"
+              variant="gradient"
+              onClick={onSubmit}
+            />
+          )}
+          {type === "verified-email" && doneIcon && (
+            <img
+              src={doneIcon}
+              alt="Done"
+              className="absolute transform -translate-y-1/2 cursor-pointer right-2 top-1/2"
+              onClick={onSubmit}
+              style={{ width: "24px", height: "24px" }}
+            />
           )}
         </div>
       </label>

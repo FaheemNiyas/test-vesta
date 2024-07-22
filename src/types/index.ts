@@ -2,6 +2,17 @@ export interface HomeLayoutProps {
   children: React.ReactNode;
 }
 
+export interface SwiperProps {
+  slidesPerView: number;
+  slideList: {
+    id: number;
+    logo: React.JSX.Element;
+  }[];
+  pagination?: boolean;
+  navigation?: boolean;
+  autoplay?: boolean;
+}
+
 export type AuthLayoutProps = {
   title: string;
   subtitle: string;
@@ -10,20 +21,20 @@ export type AuthLayoutProps = {
   contentClass?: string;
 };
 
-export type InputFieldProps = {
+export interface InputFieldProps {
   label: string;
   type: string;
   placeholder: string;
   id: string;
-  name?: string;
-  value?: string;
+  name: string;
+  value: string;
+  required: boolean;
   wrapperClass?: string;
   contentClass?: string;
-  required?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  inputProps?: any;
-  error?: string;
-};
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit?: (e?: React.FormEvent) => void;
+  doneIcon?: string;
+}
 
 export type ButtonTypes = {
   label?: string;
@@ -64,6 +75,7 @@ export interface AuthFormProps {
   onSubtitleButtonClick?: () => void;
   onSubtitleButtonTwoClick?: () => void;
   isLogin: boolean;
+  isSubmit: boolean;
   formFields: React.ReactNode;
   onSubmit: (e: React.FormEvent) => void;
   loading: boolean;

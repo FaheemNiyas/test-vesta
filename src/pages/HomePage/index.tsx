@@ -13,6 +13,8 @@ import TrendingCompanies from "./Components/TrendingCompanies";
 import TrendingNFT from "./Components/TrendingNFT";
 import LiveAuction from "./Components/LiveAuction";
 import TopCollection from "./Components/TopCollection";
+import UpcomingMint from "./Components/UpcomingMint";
+import Subscribe from "./Components/Subscribe";
 
 const HomePage = () => {
   const useLoginSuccessMutation = useLoginSuccess();
@@ -54,6 +56,8 @@ const HomePage = () => {
         <TrendingNFT/>
         <LiveAuction/>
         <TopCollection/>
+        <UpcomingMint/>
+        <Subscribe/>
         {/* <div className="flex flex-col gap-16">
           <div>
             w3m-button <w3m-button />

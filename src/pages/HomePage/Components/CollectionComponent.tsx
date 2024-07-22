@@ -113,7 +113,7 @@ const collections = [
 
 const CollectionComponent: React.FC = () => {
   return (
-    <div className="relative">
+    <div className="relative !mt-0">
       <Swiper
         spaceBetween={30}
         pagination={{ clickable: false }}

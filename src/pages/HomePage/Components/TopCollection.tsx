@@ -11,7 +11,7 @@ export default function TopCollection() {
         {" "}
         Notable collections and token in the real estate digital investment
       </div>
-      <div className="grid grid-cols-4 w-full gap-y-6  justify-items-center  px-40">
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 w-full gap-y-6  justify-items-center  px-40">
         <TopCollectionCard/>
         <TopCollectionCard/>
         <TopCollectionCard/>

@@ -35,7 +35,7 @@ export default function Carousel({slideList, pagination=false, navigation=false,
       >
         {slideList &&
           slideList.map((item) => (
-            <SwiperSlide key={item.id} className={"!flex justify-start items-center"}>
+            <SwiperSlide key={item.id} className={"!flex justify-center items-center"}>
               {item.logo}
             </SwiperSlide>
           ))}

@@ -28,19 +28,19 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col w-full h-[890px] items-center p-4 pt-10 md:p-8 bg-[url('/assets/landing-bg.png')] bg-no-repeat bg-cover">
-      <div className="flex flex-col max-w-[1100px] gap-10 pt-20">
+      <div className="flex flex-col xl:max-w-[1100px] w-full gap-10 pt-20">
         <div>
           <div className="flex flex-row gap-10  items-center justify-between">
-            <div className="text-[#05F691] font-bold text-[128px] leading-[0.7]">
+            <div className="text-[#05F691] font-bold lg:text-[128px] text-[100px] leading-[0.7]">
               {" "}
               VESTA
             </div>
-            <div className="text-white font-bold text-[128px] leading-[0.7]">
+            <div className="text-white font-bold lg:text-[128px] text-[100px] leading-[0.7]">
               PROPERTY
             </div>
           </div>
           <div className="flex flex-row gap-10  items-center justify-between">
-            <div className="text-white font-bold text-[128px] leading-[0.8] italic">
+            <div className="text-white font-bold lg:text-[128px] text-[100px] leading-[0.8] italic">
               EXCHANGE
             </div>
             <p className="text-[#fff] font-light text-[16px] leading-none w-full">

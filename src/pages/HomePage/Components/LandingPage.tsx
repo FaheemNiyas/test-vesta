@@ -27,7 +27,7 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="flex flex-col w-full h-[890px] items-center p-4 pt-10 md:p-8">
+    <div className="flex flex-col w-full h-[890px] items-center p-4 pt-10 md:p-8 bg-[url('/assets/landing-bg.png')] bg-no-repeat bg-cover">
       <div className="flex flex-col max-w-[1100px] gap-10 pt-20">
         <div>
           <div className="flex flex-row gap-10  items-center justify-between">

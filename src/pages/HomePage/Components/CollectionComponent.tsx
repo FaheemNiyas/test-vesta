@@ -1,4 +1,4 @@
-import { CollectionIcon, LaunchArrowIcon, VerifyIcon } from "@/constants";
+import { CollectionDemoIcon, LaunchArrowIcon, VerifyIcon } from "@/constants";
 import React from "react";
 
 export default function CollectionComponent() {
@@ -6,7 +6,7 @@ export default function CollectionComponent() {
     <div className="bg-gradient-to-l to-[#05F691] from-[#EFE709] ">
       <div className="flex flex-col w-full min-h-[609px] bg-no-repeat bg-cover bg-[#08080836]  p-4 pt-10 md:p-8 bg-[url('/assets/collection-bg.png')]">
         <div className="flex flex-col w-full p-[75px]">
-          <img src={CollectionIcon} width={70} />
+          <img src={CollectionDemoIcon} width={70} />
           <div className="flex flex-row items-center gap-5 text-white text-[40px] font-semibold font-['Inter'] leading-[88px]">
             Collection Name <img src={VerifyIcon} />
           </div>

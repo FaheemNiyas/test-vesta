@@ -14,8 +14,50 @@ body {
 }
 
 .headline-gradient-1 {
-  background: linear-gradient(94deg, #05F691 0%, #E2F8CC 48%, #EFE709 100%);
+  background: linear-gradient(94deg, #05f691 0%, #e2f8cc 48%, #efe709 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Hide default Swiper navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  display: none;
+}
+
+/* Hide default Swiper navigation button pseudo-elements */
+.swiper-button-next:after,
+.swiper-button-prev:after,
+.swiper-rtl .swiper-button-prev:after,
+.swiper-rtl .swiper-button-next:after {
+  content: none !important;
+}
+
+/* Style custom navigation buttons */
+.custom-button {
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transform: translateY(-50%);
+}
+
+.swiper-button-next.custom-button {
+  right: 10px;
+}
+
+.swiper-button-prev.custom-button {
+  left: 10px;
+}
+
+.swiper-pagination-custom {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
 }

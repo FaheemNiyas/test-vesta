@@ -43,6 +43,8 @@ import TotalPropertyIcon from "../assets/icons/home-page/total-property.svg";
 import EthereumIcon from "../assets/icons/home-page/eth.svg";
 import doneIcon from "../assets/icons/doneIcon.svg";
 import carbonSecurityIcon from "../assets/icons/carbonSecurityIcon.svg";
+import RightArrowIcon from "../assets/icons/rightArrowIcon.svg";
+import LeftArrowIcon from "../assets/icons/leftArrowIcon.svg";
 
 import FtwitterIcon from "../assets/icons/social-icon/FtwitterIcon.svg";
 import FlinkedInIcon from "../assets/icons/social-icon/FlinkedInIcon.svg";
@@ -100,6 +102,8 @@ export {
   FlinkedInIcon,
   doneIcon,
   carbonSecurityIcon,
+  LeftArrowIcon,
+  RightArrowIcon,
 };
 
 // --------- LOGO ---------

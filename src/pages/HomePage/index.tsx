@@ -39,8 +39,6 @@ const HomePage = () => {
     }
   }, []);
 
-  console.log("Rikas");
-
   return (
     <>
       <div>Rikas</div>

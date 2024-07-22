@@ -39,7 +39,7 @@ export default function DetailsSection1() {
         </div>
         <div className="w-1/2 flex flex-col gap-5">
           {details.map((detail) => (
-            <div className="flex flex-row justify-between items-center gap-10">
+            <div className="flex flex-row  items-center gap-10">
               <div className="flex flex-row justify-between items-center min-w-[100px]">
                 <div className="bg-[#1C355D] rounded-full p-5 flex flex-col min-w-[100px] min-h-[100px] justify-center items-center">
                   <img className="max-w-[100px] max-h-[100px]" src={detail.icon} alt="coin" />

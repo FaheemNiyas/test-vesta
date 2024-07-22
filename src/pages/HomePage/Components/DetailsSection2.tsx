@@ -3,7 +3,8 @@ import React from "react";
 export default function DetailsSection2() {
   return (
     <div className="w-full  p-20">
-      <div className="flex flex-col w-full border border-x-white border-r-white border-l-transparent rounded-3xl p-10">
+      <div className="flex flex-col w-full bg-[#b3b3b3] rounded-3xl py-[1px] pr-[1px]">
+      <div className="flex flex-col w-full bg-[#152743] rounded-3xl px-10 py-20">
         <div className="flex flex-col w-full h-[132px] text-center">
           <span className="text-white text-4xl font-medium font-['Inter']">
             Become a NFT Holders and earn rent
@@ -22,6 +23,7 @@ export default function DetailsSection2() {
             <img src="/assets/revenue-step-4.png" className="w-1/5"/>
 
         </div>
+      </div>
       </div>
     </div>
   );

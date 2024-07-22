@@ -7,6 +7,11 @@ import DetailsSection2 from "./Components/DetailsSection2";
 import { useLoginSuccess } from "@/services/auth.service";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import DetailsSection3 from "./Components/DetailsSection3";
+import DetailsSection4 from "./Components/DetailsSection4";
+import TrendingCompanies from "./Components/TrendingCompanies";
+import TrendingNFT from "./Components/TrendingNFT";
+import LiveAuction from "./Components/LiveAuction";
 
 const HomePage = () => {
   const useLoginSuccessMutation = useLoginSuccess();
@@ -41,6 +46,11 @@ const HomePage = () => {
         <SearchBox/>
         <DetailsSection1/>
         <DetailsSection2/>
+        <DetailsSection3/>
+        <DetailsSection4/>
+        <TrendingCompanies/>
+        <TrendingNFT/>
+        <LiveAuction/>
         {/* <div className="flex flex-col gap-16">
           <div>
             w3m-button <w3m-button />

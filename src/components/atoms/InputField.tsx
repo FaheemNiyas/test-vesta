@@ -85,7 +85,7 @@ const InputField = ({
               text="Next"
               width="w-[101px]"
               textColor="text-slate-800"
-              className="absolute py-1 text-white transform -translate-y-1/2 right-2 top-1/2 text-opacity-70"
+              className="absolute !py-1 text-secondary font-bold transform -translate-y-1/2 right-2 top-1/2 text-opacity-70"
               variant="gradient"
               onClick={onSubmit}
             />

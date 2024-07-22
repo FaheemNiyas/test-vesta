@@ -68,7 +68,7 @@ const LoginPage: React.FC = () => {
           subTitleButton="Register here"
           subTitleButtonTwo="Connect Wallet"
           onSubtitleButtonClick={() => navigate("/sign-up")}
-          onSubtitleButtonTwoClick={() => navigate("/sign-up")}
+          onSubtitleButtonTwoClick={() => navigate("/connect-wallet")}
           isLogin={true}
           isSubmit={true}
           showSocialLogin={true}

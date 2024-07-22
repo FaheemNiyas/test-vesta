@@ -2,6 +2,17 @@ export interface HomeLayoutProps {
   children: React.ReactNode;
 }
 
+export interface SwiperProps {
+  slidesPerView: number;
+  slideList: {
+    id: number;
+    logo: React.JSX.Element;
+  }[];
+  pagination?: boolean;
+  navigation?: boolean;
+  autoplay?: boolean;
+}
+
 export type AuthLayoutProps = {
   title: string;
   subtitle: string;

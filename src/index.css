@@ -12,3 +12,10 @@
 body {
   @apply relative min-h-screen bg-secondary;
 }
+
+.headline-gradient-1 {
+  background: linear-gradient(94deg, #05F691 0%, #E2F8CC 48%, #EFE709 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

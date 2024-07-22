@@ -12,6 +12,7 @@ import DetailsSection4 from "./Components/DetailsSection4";
 import TrendingCompanies from "./Components/TrendingCompanies";
 import TrendingNFT from "./Components/TrendingNFT";
 import LiveAuction from "./Components/LiveAuction";
+import TopCollection from "./Components/TopCollection";
 
 const HomePage = () => {
   const useLoginSuccessMutation = useLoginSuccess();
@@ -54,6 +55,7 @@ const HomePage = () => {
         <TrendingCompanies/>
         <TrendingNFT/>
         <LiveAuction/>
+        <TopCollection/>
         {/* <div className="flex flex-col gap-16">
           <div>
             w3m-button <w3m-button />

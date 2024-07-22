@@ -3,7 +3,7 @@ import React from "react";
 export default function TrendingNFTCard() {
   return (
     <div className='flex flex-col w-full justify-center items-center gap-2'>
-      <div className="w-[333px] h-[485px] p-5 bg-white/opacity-5 rounded-[20px] shadow border border-white/opacity-30 backdrop-blur-[15px] flex-col justify-center items-center gap-5 flex">
+      <div className="w-[333px] h-[485px] p-5 bg-[#ffffff10] rounded-[20px] shadow border border-[#ffffff50] backdrop-blur-[15px] flex-col justify-center items-center gap-5 flex">
         <img
           className="self-stretch grow shrink basis-0 rounded-[15px]"
           src="/assets/trending-nft-1.png"
@@ -51,7 +51,7 @@ export default function TrendingNFTCard() {
             </div>
           </div>
         </div>
-        <div className="self-stretch h-14 px-[3px] bg-white/opacity-20 rounded-[10px] justify-center items-start gap-[30px] flex">
+        <div className="self-stretch h-14 px-[3px] bg-[#ffffff35]  rounded-[10px] justify-center items-start gap-[30px] flex">
           <div className="w-[198px] self-stretch flex-col justify-center items-start flex">
             <div className="text-white text-sm font-medium font-['Poppins']">
               Annual Rental Return

@@ -36,6 +36,11 @@ import LoginIcon from "../assets/icons/navbar/login.svg";
 import RegisterIcon from "../assets/icons/navbar/register.svg";
 import ConnectIcon from "../assets/icons/navbar/connect.svg";
 
+import FtwitterIcon from "../assets/icons/social-icon/FtwitterIcon.svg";
+import FlinkedInIcon from "../assets/icons/social-icon/FlinkedInIcon.svg";
+import FinstagramIcon from "../assets/icons/social-icon/FinstagramIcon.svg";
+import FfacebookIcon from "../assets/icons/social-icon/FfacebookIcon.svg";
+import FyoutubeIcon from "../assets/icons/social-icon/FyoutubeIcon.svg";
 
 export {
   googleIcon,
@@ -74,6 +79,11 @@ export {
   LoginIcon,
   RegisterIcon,
   ConnectIcon,
+  FtwitterIcon,
+  FyoutubeIcon,
+  FfacebookIcon,
+  FinstagramIcon,
+  FlinkedInIcon,
 };
 
 // --------- LOGO ---------
@@ -100,5 +110,60 @@ export {
   WalletConnect,
   Phantom,
   CollectionBG,
-  CollectionDemoIcon
+  CollectionDemoIcon,
 };
+
+export const footerLinks = [
+  {
+    title: "Quick Links",
+    links: [
+      { name: "Home", link: "/" },
+      { name: "Marketplace", link: "/marketplace" },
+      { name: "Collections", link: "/collections" },
+      { name: "Apply For Launch", link: "/" },
+    ],
+  },
+  {
+    title: "Resources",
+    links: [
+      { name: "How To Buy", link: "/" },
+      { name: "How To Sell", link: "/" },
+      { name: "News", link: "/" },
+      { name: "Career", link: "/" },
+      { name: "Media Kit", link: "/" },
+      { name: "FAQ", link: "/" },
+      { name: "Support", link: "/" },
+      { name: "Glossary", link: "/" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { name: "Whitepaper", link: "/" },
+      { name: "Term & Condition", link: "/" },
+      { name: "Privacy Policy", link: "/" },
+      { name: "Cookie Policy", link: "/" },
+      { name: "Refund Policy", link: "/" },
+      { name: "Copyright Policy", link: "/" },
+      { name: "AML Policy", link: "/" },
+      { name: "Dispute Resolution", link: "/" },
+    ],
+  },
+  {
+    title: "Business",
+    links: [
+      { name: "Apply as Venture Capital", link: "/" },
+      { name: "Apply for Listing ", link: "/" },
+      { name: "Apply for Partnership", link: "/" },
+      { name: "Become an Affiliate", link: "/" },
+    ],
+  },
+];
+
+export const socialMedia = [
+  { src: FtwitterIcon, alt: "twitter icon", name: "X" },
+  { src: FlinkedInIcon, alt: "linkedin icon", name: "LinkedIN" },
+  { src: FinstagramIcon, alt: "instagram icon", name: "Instagram" },
+  { src: FfacebookIcon, alt: "facebook icon", name: "Facebook" },
+  { src: FyoutubeIcon, alt: "youtube icon", name: "Youtube" },
+];

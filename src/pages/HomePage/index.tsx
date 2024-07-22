@@ -33,14 +33,17 @@ const HomePage = () => {
     }
   }, []);
 
+  console.log("Rikas");
+
   return (
     <>
+      <div>Rikas</div>
       <MainLayout>
         <LandingPage />
         <CollectionComponent />
-        <SearchBox/>
-        <DetailsSection1/>
-        <DetailsSection2/>
+        <SearchBox />
+        <DetailsSection1 />
+        <DetailsSection2 />
         {/* <div className="flex flex-col gap-16">
           <div>
             w3m-button <w3m-button />

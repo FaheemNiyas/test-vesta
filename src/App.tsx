@@ -95,9 +95,11 @@ const App = () => {
           <Route path="/activity" element={<Activity />} />
 
           {/* Marketplace Routes */}
-          <Route path="/browse-nft" element={<BrowseNFT />} />
-          <Route path="/collection" element={<Collection />} />
-          <Route path="/launchpad" element={<Launchpad />} />
+          <Route element={<ProtectedRoute />}>
+            <Route path="/browse-nft" element={<BrowseNFT />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/launchpad" element={<Launchpad />} />
+          </Route>
 
           {/* Community Routes */}
           <Route path="/news" element={<News />} />

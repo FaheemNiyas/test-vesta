@@ -11,6 +11,7 @@ const AuthForm: React.FC<AuthFormProps> = ({
   onSubtitleButtonClick,
   onSubtitleButtonTwoClick,
   isLogin,
+  isSubmit,
   formFields,
   onSubmit,
   loading,
@@ -65,15 +66,19 @@ const AuthForm: React.FC<AuthFormProps> = ({
 
         <form className="w-full mt-4 sm:mt-6" onSubmit={onSubmit}>
           <div className="flex flex-col gap-2">{formFields}</div>
-          {loading ? (
-            <div className="py-4 text-center text-white">Please wait</div>
-          ) : (
-            <button
-              type="submit"
-              className="w-full h-10 mt-8 text-black bg-white rounded-3xl"
-            >
-              {isLogin ? "Login" : "Submit Data"}
-            </button>
+          {isSubmit && (
+            <>
+              {loading ? (
+                <div className="py-4 text-center text-white">Please wait</div>
+              ) : (
+                <button
+                  type="submit"
+                  className="w-full h-10 mt-8 text-black bg-white rounded-3xl"
+                >
+                  {isLogin ? "Login" : "Submit Data"}
+                </button>
+              )}
+            </>
           )}
           {additionalLinks}
         </form>

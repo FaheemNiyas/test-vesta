@@ -21,7 +21,7 @@ const HomePage = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const isLoginSuccess = urlParams.get("success");
 
-    if (isLoginSuccess) {
+    if (isLoginSuccess === "true") {
       useLoginSuccessMutation.mutate(undefined, {
         onSuccess: (data) => {
           console.log(data);
@@ -38,8 +38,11 @@ const HomePage = () => {
     }
   }, []);
 
+  console.log("Rikas");
+
   return (
     <>
+      <div>Rikas</div>
       <MainLayout>
         <LandingPage />
         <CollectionComponent />

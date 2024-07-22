@@ -5,6 +5,7 @@ import AuthForm from "@/components/organisms/AuthForm";
 import InputField from "@/components/atoms/InputField";
 import { useRegisterUser } from "@/services/auth.service";
 import { useToast } from "@/providers/ToastProvider";
+import { doneIcon } from "@/constants";
 
 const Profile: React.FC = () => {
   const navigate = useNavigate();
@@ -58,17 +59,19 @@ const Profile: React.FC = () => {
           onSubtitleButtonClick={() => {}}
           onSubtitleButtonTwoClick={() => navigate("/referral")}
           isLogin={false}
+          isSubmit={true}
           formFields={
             <>
               <InputField
-                type="email"
+                type="verified-email"
                 name="email"
                 placeholder="Email address"
                 value={formData.email}
                 onChange={handleInputChange}
                 required
-                label={""}
-                id={""}
+                label=""
+                id=""
+                doneIcon={doneIcon}
               />
               <InputField
                 type="text"
@@ -77,8 +80,8 @@ const Profile: React.FC = () => {
                 value={formData.fname}
                 onChange={handleInputChange}
                 required
-                label={""}
-                id={""}
+                label=""
+                id=""
               />
               <InputField
                 type="text"
@@ -87,8 +90,8 @@ const Profile: React.FC = () => {
                 value={formData.lname}
                 onChange={handleInputChange}
                 required
-                label={""}
-                id={""}
+                label=""
+                id=""
               />
               <InputField
                 type="password"
@@ -97,8 +100,8 @@ const Profile: React.FC = () => {
                 value={formData.password}
                 onChange={handleInputChange}
                 required
-                label={""}
-                id={""}
+                label=""
+                id=""
               />
             </>
           }

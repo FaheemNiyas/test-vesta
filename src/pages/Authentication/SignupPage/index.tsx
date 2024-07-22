@@ -18,8 +18,8 @@ const SignupPage: React.FC = () => {
     setEmail(e.target.value);
   };
 
-  const handleEmailSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleEmailSubmit = (e?: React.FormEvent) => {
+    e?.preventDefault();
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (emailRegex.test(email)) {
       setLoading(true);
@@ -57,25 +57,27 @@ const SignupPage: React.FC = () => {
           subTitleButton="Login Here"
           subTitleButtonTwo="Connect Wallet"
           onSubtitleButtonClick={() => navigate("/login")}
-          onSubtitleButtonTwoClick={() => {}}
+          onSubtitleButtonTwoClick={() => navigate("/connect-wallet")}
           isLogin={false}
+          isSubmit={false}
           showSocialLogin={true}
           formFields={
             <>
               <InputField
-                type="email"
-                name="email"
+                type="register-email"
+                name="register-email"
                 placeholder="Email address"
                 value={email}
                 onChange={handleEmailChange}
                 required
-                label={""}
-                id={""}
+                label=""
+                id=""
+                onSubmit={handleEmailSubmit}
               />
             </>
           }
           onSubmit={handleEmailSubmit}
-          loading={false}
+          loading={loading}
           additionalLinks={
             error && (
               <span className="ml-2 text-sm font-medium text-red-500">

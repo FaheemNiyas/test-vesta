@@ -70,6 +70,7 @@ const LoginPage: React.FC = () => {
           onSubtitleButtonClick={() => navigate("/sign-up")}
           onSubtitleButtonTwoClick={() => navigate("/sign-up")}
           isLogin={true}
+          isSubmit={true}
           showSocialLogin={true}
           formFields={
             <>

@@ -13,6 +13,7 @@ export type ProfileState = {
   setLName: (value: string) => void;
   setDescription: (value: string) => void;
   setProfileImage: (image: string | null) => void;
+  clearData: () => void;
 };
 
 const useProfileStore = create<ProfileState>()(
@@ -23,12 +24,20 @@ const useProfileStore = create<ProfileState>()(
         fname: "",
         lname: "",
         description: "",
-        profileImage: "null",
+        profileImage: null,
         setId: (value) => set(() => ({ id: value })),
         setFName: (value) => set(() => ({ fname: value })),
         setLName: (value) => set(() => ({ lname: value })),
         setDescription: (value) => set(() => ({ description: value })),
         setProfileImage: (image) => set(() => ({ profileImage: image })),
+        clearData: () =>
+          set(() => ({
+            id: "",
+            fname: "",
+            lname: "",
+            description: "",
+            profileImage: null,
+          })),
       }),
       {
         name: "profile-storage",

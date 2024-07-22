@@ -35,6 +35,8 @@ import SecurityIcon from "../assets/icons/navbar/security.svg";
 import LoginIcon from "../assets/icons/navbar/login.svg";
 import RegisterIcon from "../assets/icons/navbar/register.svg";
 import ConnectIcon from "../assets/icons/navbar/connect.svg";
+import doneIcon from "../assets/icons/doneIcon.svg";
+import carbonSecurityIcon from "../assets/icons/carbonSecurityIcon.svg";
 
 import FtwitterIcon from "../assets/icons/social-icon/FtwitterIcon.svg";
 import FlinkedInIcon from "../assets/icons/social-icon/FlinkedInIcon.svg";
@@ -84,6 +86,8 @@ export {
   FfacebookIcon,
   FinstagramIcon,
   FlinkedInIcon,
+  doneIcon,
+  carbonSecurityIcon,
 };
 
 // --------- LOGO ---------

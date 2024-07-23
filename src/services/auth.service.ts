@@ -11,6 +11,7 @@ type RegisterData = {
 
 type GAuthData = {
   email: string;
+  is2FAEnabled: boolean;
 };
 
 type GAuthVerifyData = {

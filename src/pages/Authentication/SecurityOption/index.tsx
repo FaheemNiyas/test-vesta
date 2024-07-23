@@ -14,7 +14,7 @@ const SecurityOption: React.FC = () => {
   const handleSubmit = () => {
     if (isChecked) {
       useGAuthMutation.mutate(
-        { email: localStorage.getItem("email") || "" },
+        { email: localStorage.getItem("email") || "", is2FAEnabled: true },
         {
           onSuccess: (res) => {
             console.log(res);

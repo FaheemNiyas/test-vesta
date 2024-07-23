@@ -1,25 +1,67 @@
 // components/Navbar.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import Logo from "../Logo";
 import MenuButton from "./MenuButton";
 import ConnectButton from "../ConnectButton";
 import UserButton from "./UserButton";
 import NavItems from "./NavItems";
-import { ActivityIcon, AnalyticsIcon, BrowsNFTIcon, CareerIcon, CollectionIcon, DashboardIcon, LearnMoreIcon, NewsIcon, RampIcon, RankingIcon, SwapIcon } from "@/constants";
+import {
+  ActivityIcon,
+  AnalyticsIcon,
+  BrowsNFTIcon,
+  CareerIcon,
+  CollectionIcon,
+  DashboardIcon,
+  LearnMoreIcon,
+  NewsIcon,
+  RampIcon,
+  RankingIcon,
+  SwapIcon,
+} from "@/constants";
+import useUserStore from "@/store/user";
+import { useCookies } from "react-cookie";
 
 const Navbar = () => {
   const { isConnected } = useAccount();
-  const [isLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const userState = useUserStore();
+  const [cookies] = useCookies(["JwtToken"]);
+
+  const isUnAuthorized = () => {
+    const JwtToken = cookies.JwtToken;
+
+    if (userState.data != null && JwtToken != null) {
+      setIsLogin(true);
+      return false;
+    } else {
+      setIsLogin(false);
+      return true;
+    }
+  };
+
+  useEffect(() => {
+    isUnAuthorized();
+  }, []);
 
   const navComponents = [
     {
       id: "1",
       title: "Stats",
       items: [
-        { id: "1", item: "Dashboard", route: "/dashboard", icon: DashboardIcon },
-        { id: "2", item: "Analytics", route: "/analytics", icon: AnalyticsIcon },
+        {
+          id: "1",
+          item: "Dashboard",
+          route: "/dashboard",
+          icon: DashboardIcon,
+        },
+        {
+          id: "2",
+          item: "Analytics",
+          route: "/analytics",
+          icon: AnalyticsIcon,
+        },
         { id: "3", item: "Swap", route: "/swap", icon: SwapIcon },
         { id: "4", item: "On /Off Ramp", route: "/ramp", icon: RampIcon },
         { id: "5", item: "Rankings", route: "/rankings", icon: RankingIcon },
@@ -30,8 +72,18 @@ const Navbar = () => {
       id: "2",
       title: "Marketplace",
       items: [
-        { id: "1", item: "Browse NFT", route: "/browse-nft", icon: BrowsNFTIcon },
-        { id: "2", item: "Collection", route: "/collection", icon: CollectionIcon },
+        {
+          id: "1",
+          item: "Browse NFT",
+          route: "/browse-nft",
+          icon: BrowsNFTIcon,
+        },
+        {
+          id: "2",
+          item: "Collection",
+          route: "/collection",
+          icon: CollectionIcon,
+        },
       ],
     },
     {
@@ -46,7 +98,12 @@ const Navbar = () => {
       items: [
         { id: "1", item: "News", route: "/news", icon: NewsIcon },
         { id: "2", item: "Career", route: "/career", icon: CareerIcon },
-        { id: "3", item: "Learn More", route: "/learn-more", icon: LearnMoreIcon },
+        {
+          id: "3",
+          item: "Learn More",
+          route: "/learn-more",
+          icon: LearnMoreIcon,
+        },
       ],
     },
   ];

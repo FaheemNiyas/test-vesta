@@ -15,7 +15,7 @@ export default function UpcomingMint() {
       ];
 
   return (
-    <div className="flex flex-col w-full justify-center items-center gap-10 py-40">
+    <div className="flex flex-col w-full justify-center items-center gap-10 py-40 relative">
       <div className="headline-gradient-1 text-[55px] font-medium font-['Inter']">Upcoming Mints</div>
       <div className="w-full  ">
         <Carousel slideList={nftList} slidesPerView={3} navigation={true} />

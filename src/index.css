@@ -49,10 +49,12 @@ body {
 }
 
 .swiper-button-next.custom-button {
+  margin-top: 50px;
   right: 10px;
 }
 
 .swiper-button-prev.custom-button {
+  margin-top: 50px;
   left: 10px;
 }
 

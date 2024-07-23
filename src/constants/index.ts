@@ -37,6 +37,8 @@ import RegisterIcon from "../assets/icons/navbar/register.svg";
 import ConnectIcon from "../assets/icons/navbar/connect.svg";
 import doneIcon from "../assets/icons/doneIcon.svg";
 import carbonSecurityIcon from "../assets/icons/carbonSecurityIcon.svg";
+import RightArrowIcon from "../assets/icons/rightArrowIcon.svg";
+import LeftArrowIcon from "../assets/icons/leftArrowIcon.svg";
 
 import FtwitterIcon from "../assets/icons/social-icon/FtwitterIcon.svg";
 import FlinkedInIcon from "../assets/icons/social-icon/FlinkedInIcon.svg";
@@ -88,6 +90,8 @@ export {
   FlinkedInIcon,
   doneIcon,
   carbonSecurityIcon,
+  LeftArrowIcon,
+  RightArrowIcon,
 };
 
 // --------- LOGO ---------

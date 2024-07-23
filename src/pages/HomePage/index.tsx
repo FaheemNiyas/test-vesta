@@ -43,35 +43,20 @@ const HomePage = () => {
 
   return (
     <>
-      <div>Rikas</div>
       <MainLayout>
         <LandingPage />
         <CollectionComponent />
-        <SearchBox/>
-        <DetailsSection1/>
-        <DetailsSection2/>
-        <DetailsSection3/>
-        <DetailsSection4/>
-        <TrendingCompanies/>
-        <TrendingNFT/>
-        <LiveAuction/>
-        <TopCollection/>
-        <UpcomingMint/>
-        <Subscribe/>
-        {/* <div className="flex flex-col gap-16">
-          <div>
-            w3m-button <w3m-button />
-          </div>
-          <div>
-            w3m-account-button <w3m-account-button />
-          </div>
-          <div>
-            w3m-connect-button <w3m-connect-button />
-          </div>
-          <div>
-            w3m-network-button <w3m-network-button />
-          </div>
-        </div> */}
+        <SearchBox />
+        <DetailsSection1 />
+        <DetailsSection2 />
+        <DetailsSection3 />
+        <DetailsSection4 />
+        <TrendingCompanies />
+        <TrendingNFT />
+        <LiveAuction />
+        <TopCollection />
+        <UpcomingMint />
+        <Subscribe />
       </MainLayout>
     </>
   );

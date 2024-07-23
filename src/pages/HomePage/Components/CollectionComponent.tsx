@@ -4,14 +4,9 @@ import {
   CollectionDemoIcon,
   LaunchArrowIcon,
   VerifyIcon,
-  LeftArrowIcon,
-  RightArrowIcon,
 } from "@/constants";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import { Pagination, Navigation } from "swiper/modules";
+
+import Carousel from "@/components/organisms/Carousel";
 
 // Define the props for the SlideContent component
 interface SlideContentProps {
@@ -111,35 +106,53 @@ const collections = [
   },
 ];
 
+const collectionsSlides = [
+  {
+    id: 1,
+    logo: (
+      <SlideContent
+        {...collections[0]}
+        currentIndex={0}
+        totalCollections={collections.length}
+      />
+    ),
+  },
+  {
+    id: 2,
+    logo: (
+      <SlideContent
+        {...collections[1]}
+        currentIndex={1}
+        totalCollections={collections.length}
+      />
+    ),
+  },
+  {
+    id: 3,
+    logo: (
+      <SlideContent
+        {...collections[2]}
+        currentIndex={2}
+        totalCollections={collections.length}
+      />
+    ),
+  },
+  {
+    id: 4,
+    logo: (
+      <SlideContent
+        {...collections[3]}
+        currentIndex={3}
+        totalCollections={collections.length}
+      />
+    ),
+  },
+];
+
 const CollectionComponent: React.FC = () => {
   return (
-    <div className="w-40screen min-w-fill-available">
-      <Swiper
-        spaceBetween={30}
-        pagination={{ clickable: false }}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        }}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {collections.map((collection, index) => (
-          <SwiperSlide key={index}>
-            <SlideContent
-              {...collection}
-              currentIndex={index}
-              totalCollections={collections.length}
-            />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <div className="swiper-button-next custom-button">
-        <img src={RightArrowIcon} alt="Next" />
-      </div>
-      <div className="swiper-button-prev custom-button">
-        <img src={LeftArrowIcon} alt="Prev" />
-      </div>
+    <div className="relative">
+      <Carousel slideList={collectionsSlides} slidesPerView={1} isFullScreen={true} navigation={true} />
     </div>
   );
 };

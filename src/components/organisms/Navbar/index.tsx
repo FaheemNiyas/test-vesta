@@ -1,5 +1,5 @@
 // components/Navbar.tsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAccount } from "wagmi";
 import Logo from "../Logo";
 import MenuButton from "./MenuButton";
@@ -7,11 +7,33 @@ import ConnectButton from "../ConnectButton";
 import UserButton from "./UserButton";
 import NavItems from "./NavItems";
 import { ActivityIcon, AnalyticsIcon, BrowsNFTIcon, CareerIcon, CollectionIcon, DashboardIcon, LearnMoreIcon, NewsIcon, RampIcon, RankingIcon, SwapIcon } from "@/constants";
+import useUserStore from "@/store/user";
+import { useCookies } from "react-cookie";
 
 const Navbar = () => {
   const { isConnected } = useAccount();
-  const [isLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const userState = useUserStore();
+  const [cookies] = useCookies(["JwtToken"]);
+
+  const isUnAuthorized = () => {
+    let isUnAuthorized = true;
+    const JwtToken = cookies.JwtToken;
+
+    if (userState.data != null && JwtToken != null) {
+      isUnAuthorized = false;
+    }
+
+    setIsLogin(isUnAuthorized);
+
+    return isUnAuthorized;
+  };
+  
+  useEffect(() => {
+    isUnAuthorized();
+  },[])
+  
 
   const navComponents = [
     {

@@ -11,6 +11,7 @@ export interface SwiperProps {
   pagination?: boolean;
   navigation?: boolean;
   autoplay?: boolean;
+  isFullScreen?: boolean;
 }
 
 export type AuthLayoutProps = {

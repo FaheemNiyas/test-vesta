@@ -18,45 +18,80 @@ export default function Carousel({
   pagination = false,
   slidesPerView,
   autoplay = false,
+  isFullScreen = false,
 }: SwiperProps) {
   return (
     <div className="w-40screen min-w-fill-available">
-      <Swiper
-        slidesPerView={slidesPerView}
-        modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
-        navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        }}
-        freeMode={true}
-        loop={true}
-        centeredSlides={true}
-        pagination={{
-          clickable: true,
-          enabled: pagination,
-        }}
-        // navigation={navigation}
-        autoplay={autoplay}
-        speed={1300}
-        spaceBetween={0}
-        className="flex flex-col items-end"
-      >
-        {slideList &&
-          slideList.map((item) => (
-            <SwiperSlide
-              key={item.id}
-              className={"!flex justify-center items-center"}
-            >
-              {item.logo}
-            </SwiperSlide>
-          ))}
-      </Swiper>
-      <div className="swiper-button-next custom-button">
-        <img src={RightArrowIcon} alt="Next" />
-      </div>
-      <div className="swiper-button-prev custom-button">
-        <img src={LeftArrowIcon} alt="Prev" />
-      </div>
+      {isFullScreen ? (
+        <>
+          <Swiper
+            spaceBetween={30}
+            pagination={{ clickable: false }}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            modules={[Pagination, Navigation]}
+            className="mySwiper"
+          >
+            {slideList.map((collection, index) => (
+              <SwiperSlide key={index}>
+                {collection.logo}
+                {/* <SlideContent
+                  {...collection}
+                  currentIndex={index}
+                  totalCollections={collections.length}
+                /> */}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <div className="swiper-button-next custom-button">
+            <img src={RightArrowIcon} alt="Next" />
+          </div>
+          <div className="swiper-button-prev custom-button">
+            <img src={LeftArrowIcon} alt="Prev" />
+          </div>
+        </>
+      ) : (
+        <>
+          <Swiper
+            slidesPerView={slidesPerView}
+            modules={[Autoplay, Navigation, Pagination, Scrollbar, A11y]}
+            navigation={{
+              nextEl: ".swiper-button-next",
+              prevEl: ".swiper-button-prev",
+            }}
+            freeMode={true}
+            loop={true}
+            centeredSlides={true}
+            pagination={{
+              clickable: true,
+              enabled: pagination,
+            }}
+            // navigation={navigation}
+            autoplay={autoplay}
+            speed={1300}
+            spaceBetween={0}
+            className="flex flex-col items-end"
+          >
+            {slideList &&
+              slideList.map((item) => (
+                <SwiperSlide
+                  key={item.id}
+                  className={"!flex justify-center items-center"}
+                >
+                  {item.logo}
+                </SwiperSlide>
+              ))}
+          </Swiper>
+          <div className="swiper-button-next custom-button">
+            <img src={RightArrowIcon} alt="Next" />
+          </div>
+          <div className="swiper-button-prev custom-button">
+            <img src={LeftArrowIcon} alt="Prev" />
+          </div>
+        </>
+      )}
     </div>
   );
 }

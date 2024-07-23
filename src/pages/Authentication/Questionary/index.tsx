@@ -1,3 +1,6 @@
+// src/pages/Authentication/Questionary.tsx
+// This page presents a questionnaire for users to fill out as part of the authentication process.
+
 import { useUserUpdate } from "@/services/auth.service";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";

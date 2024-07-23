@@ -113,7 +113,7 @@ const collections = [
 
 const CollectionComponent: React.FC = () => {
   return (
-    <div className="relative">
+    <div className="w-40screen min-w-fill-available">
       <Swiper
         spaceBetween={30}
         pagination={{ clickable: false }}

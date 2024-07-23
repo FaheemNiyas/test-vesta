@@ -1,3 +1,6 @@
+// src/pages/Authentication/ResetPasswordPage.tsx
+// This page allows users to reset their password after receiving a reset link.
+
 import { useState, ChangeEvent, FormEvent } from "react";
 import AuthLayout from "@/layouts/AuthLayout";
 import OptionalCard from "@/components/organisms/OptionalCard";

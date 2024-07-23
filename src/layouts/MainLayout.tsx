@@ -5,7 +5,7 @@ import { HomeLayoutProps } from "@/types";
 const MainLayout = ({ children }: HomeLayoutProps) => {
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="border-b">
+      <header className="">
         <div className="flex items-center h-16 px-4">
           <Navbar />
           {/* <div className="flex items-center ml-auto space-x-4">

@@ -25,7 +25,7 @@ const UserCompliance = () => {
         {
           onSuccess: () => {
             success("User registration fully completed");
-            navigate("/");
+            navigate("/success");
           },
           onError: (e) => {
             error(e.message || "Failed to complete registration");

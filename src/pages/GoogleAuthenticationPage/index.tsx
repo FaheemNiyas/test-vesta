@@ -13,6 +13,7 @@ const GoogleAuthenticationPage = () => {
   const [isCorrect, setCorrect] = useState<boolean | null>(null);
   const useVerifyGAuthMutation = useVerifyGoogleAuth();
   const navigate = useNavigate();
+  const loginParam = new URLSearchParams(window.location.search).get("login");
 
   const handleSubmit = (pin: string) => {
     useVerifyGAuthMutation.mutate(
@@ -21,7 +22,12 @@ const GoogleAuthenticationPage = () => {
         onSuccess: (res) => {
           console.log(res);
           setCorrect(true);
-          navigate("/connect-wallet");
+
+          if (loginParam === "true") {
+            navigate("/");
+          } else {
+            navigate("/connect-wallet");
+          }
         },
         onError: (error) => {
           console.log(error);

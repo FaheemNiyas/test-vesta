@@ -41,8 +41,13 @@ const LoginPage: React.FC = () => {
           profileStore.setFName(userData.fname || "");
           profileStore.setLName(userData.lname || "");
           profileStore.setProfileImage(userData.profileImage || null);
-          navigate("/");
-          success("Login successful!");
+
+          if (res.data.data.twoFactorAuthentication) {
+            navigate("/google-authentication/?login=true");
+          } else {
+            navigate("/");
+            success("Login successful!");
+          }
         } else {
           error("Login failed! Please try again.");
         }

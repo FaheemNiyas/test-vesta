@@ -1,3 +1,6 @@
+// src/pages/HomePage.tsx
+// This is the main landing page of the application.
+
 import MainLayout from "@/layouts/MainLayout";
 import LandingPage from "./Components/LandingPage";
 import CollectionComponent from "./Components/CollectionComponent";

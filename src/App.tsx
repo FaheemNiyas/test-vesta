@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Spinner } from "./components/atoms/Spinner";
 
-// Lazy load pages
+// Lazy load pages to improve performance by splitting the bundle
 const HomePage = lazy(() => import("./pages/HomePage"));
 const LoginPage = lazy(() => import("./pages/Authentication/LoginPage"));
 const SignupPage = lazy(() => import("./pages/Authentication/SignupPage"));
@@ -18,7 +18,6 @@ const TwoStepVerificationPage = lazy(
 const UserProfile = lazy(() => import("./pages/UserProfile"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const ProtectedRoute = lazy(() => import("./middleware/ProtectedRoute"));
-
 const Profile = lazy(() => import("./pages/Authentication/Profile/Profile"));
 const GoogleAuthenticationPage = lazy(
   () => import("./pages/GoogleAuthenticationPage")
@@ -53,6 +52,7 @@ const Swap = lazy(() => import("./pages/Stats/Swap"));
 const App = () => {
   return (
     <BrowserRouter>
+      {/* Suspense component is used to show a fallback spinner while pages are being lazy loaded */}
       <Suspense
         fallback={
           <div className="flex items-center justify-center h-[50vh]">
@@ -95,6 +95,7 @@ const App = () => {
           <Route path="/activity" element={<Activity />} />
 
           {/* Marketplace Routes */}
+          {/* ProtectedRoute component ensures that these routes are only accessible to authenticated users */}
           <Route element={<ProtectedRoute />}>
             <Route path="/browse-nft" element={<BrowseNFT />} />
             <Route path="/collection" element={<Collection />} />
@@ -107,11 +108,13 @@ const App = () => {
           <Route path="/learn-more" element={<LearnMore />} />
 
           {/* Main Routes */}
+          {/* ProtectedRoute component ensures that these routes are only accessible to authenticated users */}
           <Route element={<ProtectedRoute />}>
             <Route path="/user-profile" element={<UserProfile />} />
           </Route>
 
           {/* Fallback Route */}
+          {/* If no other routes match, the NotFoundPage component is displayed */}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>

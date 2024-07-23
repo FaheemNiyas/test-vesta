@@ -1,3 +1,6 @@
+// src/pages/Authentication/SecurityOption.tsx
+// This page allows users to configure their security settings.
+
 import React, { useState } from "react";
 import Button from "@/components/atoms/Button";
 import OptionalCard from "@/components/organisms/OptionalCard";
@@ -14,7 +17,7 @@ const SecurityOption: React.FC = () => {
   const handleSubmit = () => {
     if (isChecked) {
       useGAuthMutation.mutate(
-        { email: localStorage.getItem("email") || "" },
+        { email: localStorage.getItem("email") || "", is2FAEnabled: true },
         {
           onSuccess: (res) => {
             console.log(res);

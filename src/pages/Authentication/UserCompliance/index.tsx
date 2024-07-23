@@ -1,3 +1,6 @@
+// src/pages/Authentication/UserCompliance.tsx
+// This page ensures that users comply with necessary regulations and requirements.
+
 import Button from "@/components/atoms/Button";
 import OptionalCard from "@/components/organisms/OptionalCard";
 import AuthLayout from "@/layouts/AuthLayout";

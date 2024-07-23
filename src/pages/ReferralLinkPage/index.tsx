@@ -1,3 +1,6 @@
+// src/pages/ReferralLinkPage.tsx
+// This page allows users to generate and manage their referral links.
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/atoms/Button";

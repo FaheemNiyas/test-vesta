@@ -1,3 +1,6 @@
+// src/pages/Authentication/LoginPage.tsx
+// This page provides the login form for users to access their accounts.
+
 import React, { useState } from "react";
 import AuthLayout from "@/layouts/AuthLayout";
 import AuthForm from "@/components/organisms/AuthForm";
@@ -38,8 +41,13 @@ const LoginPage: React.FC = () => {
           profileStore.setFName(userData.fname || "");
           profileStore.setLName(userData.lname || "");
           profileStore.setProfileImage(userData.profileImage || null);
-          navigate("/");
-          success("Login successful!");
+
+          if (res.data.data.twoFactorAuthentication) {
+            navigate("/google-authentication/?login=true");
+          } else {
+            navigate("/");
+            success("Login successful!");
+          }
         } else {
           error("Login failed! Please try again.");
         }

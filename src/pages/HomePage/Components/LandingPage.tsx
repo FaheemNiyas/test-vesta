@@ -1,7 +1,13 @@
 import Carousel from "@/components/organisms/Carousel";
 import LandingPageCard from "@/components/organisms/LandingPage/LandingPageCard";
 import ProviderCard from "@/components/organisms/LandingPage/ProviderCard";
-import { LaunchArrowIcon, Metamask, Phantom, TrustWallet, WalletConnect } from "@/constants";
+import {
+  LaunchArrowIcon,
+  Metamask,
+  Phantom,
+  TrustWallet,
+  WalletConnect,
+} from "@/constants";
 import React from "react";
 
 export default function LandingPage() {
@@ -15,22 +21,21 @@ export default function LandingPage() {
   ];
 
   const providerList = [
-    { id: 1, logo: <ProviderCard image={Metamask}  /> },
-    { id: 2, logo: <ProviderCard image={TrustWallet}  /> },
-    { id: 3, logo: <ProviderCard image={WalletConnect}  /> },
-    { id: 4, logo: <ProviderCard image={Phantom}  /> },
-    { id: 1, logo: <ProviderCard image={Metamask}  /> },
-    { id: 2, logo: <ProviderCard image={TrustWallet}  /> },
-    { id: 3, logo: <ProviderCard image={WalletConnect}  /> },
-    { id: 4, logo: <ProviderCard image={Phantom}  /> },
-    
+    { id: 1, logo: <ProviderCard image={Metamask} /> },
+    { id: 2, logo: <ProviderCard image={TrustWallet} /> },
+    { id: 3, logo: <ProviderCard image={WalletConnect} /> },
+    { id: 4, logo: <ProviderCard image={Phantom} /> },
+    { id: 1, logo: <ProviderCard image={Metamask} /> },
+    { id: 2, logo: <ProviderCard image={TrustWallet} /> },
+    { id: 3, logo: <ProviderCard image={WalletConnect} /> },
+    { id: 4, logo: <ProviderCard image={Phantom} /> },
   ];
 
   return (
     <div className="flex flex-col w-full h-[890px] items-center p-4 pt-10 md:p-8 bg-[url('/assets/landing-bg.png')] bg-no-repeat bg-cover">
       <div className="flex flex-col xl:max-w-[1100px] w-full gap-10 pt-20">
         <div>
-          <div className="flex flex-row gap-10  items-center justify-between">
+          <div className="flex flex-row items-center justify-between gap-10">
             <div className="text-[#05F691] font-bold lg:text-[128px] text-[100px] leading-[0.7]">
               {" "}
               VESTA
@@ -39,7 +44,7 @@ export default function LandingPage() {
               PROPERTY
             </div>
           </div>
-          <div className="flex flex-row gap-10  items-center justify-between">
+          <div className="flex flex-row items-center justify-between gap-10">
             <div className="text-white font-bold lg:text-[128px] text-[100px] leading-[0.8] italic">
               EXCHANGE
             </div>
@@ -50,19 +55,23 @@ export default function LandingPage() {
             </p>
           </div>
         </div>
-        <div className="flex flex-row gap-10 items-center justify-start w-full">
+        <div className="flex flex-row items-center justify-start w-full gap-10">
           <button className="bg-gradient-to-r to-[#077546] from-[#0AC073] py-3 px-10 rounded-full">
             Browse NFT
           </button>
-          <button className="flex flex-row items-center justify-center gap-5 bg-transparent border border-white text-white py-3 px-10 rounded-full">
-            Apply For Launch <img src={LaunchArrowIcon} />
+          <button className="flex flex-row items-center justify-center gap-5 px-10 py-3 text-white bg-transparent border border-white rounded-full">
+            Apply For Launch <img alt="LaunchArrowIcon" src={LaunchArrowIcon} />
           </button>
         </div>
-        <div className=" w-5/6">
-          <Carousel slideList={nftList} slidesPerView={3}/>
+        <div className="w-5/6 ">
+          <Carousel slideList={nftList} slidesPerView={3} />
         </div>
-        <div className=" w-full">
-          <Carousel slideList={providerList} slidesPerView={4} autoplay={true}/>
+        <div className="w-full ">
+          <Carousel
+            slideList={providerList}
+            slidesPerView={4}
+            autoplay={true}
+          />
         </div>
       </div>
     </div>

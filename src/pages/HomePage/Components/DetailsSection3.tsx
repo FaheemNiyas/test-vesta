@@ -43,7 +43,7 @@ export default function DetailsSection3() {
   ];
   return (
     <div className="flex flex-col w-full ">
-      <div className="flex flex-row w-full px-20 justify-center items-center py-20 gap-20">
+      <div className="flex flex-row items-center justify-center w-full gap-20 px-20 py-20">
         <div className="flex flex-col w-1/2 ">
           <div className="headline-gradient-1 text-[55px] font-medium font-['Inter']">
             How our NFT Holders make money?
@@ -52,7 +52,7 @@ export default function DetailsSection3() {
             <div className="flex flex-col gap-2">
               {nftHolders.map((item, index) => (
                 <div key={index} className="flex flex-row gap-2">
-                  <img src={item.icon} />
+                  <img alt="item-name" src={item.icon} />
                   <div className="text-white  font-['Poppins'] leading-normal">
                     {item.name}
                   </div>
@@ -62,7 +62,7 @@ export default function DetailsSection3() {
             <div className="flex flex-col gap-2">
               {propertyOwner.map((item, index) => (
                 <div key={index} className="flex flex-row gap-2">
-                  <img src={item.icon} />
+                  <img alt="item-name" src={item.icon} />
                   <div className="text-white  font-['Poppins'] leading-normal">
                     {item.name}
                   </div>
@@ -72,11 +72,11 @@ export default function DetailsSection3() {
           </div>
           <button className="w-[239px] h-[50px] px-[18px] py-[15px] bg-[#1F365B] rounded-[100px] justify-center items-start gap-4 flex mt-20">
             <div className="flex flex-row gap-3 text-white text-base font-normal font-['Poppins'] leading-tight">
-              Browse NFT <img src={LaunchArrowIcon} alt="arrow"/>
+              Browse NFT <img src={LaunchArrowIcon} alt="arrow" />
             </div>
           </button>
         </div>
-        <div className="flex flex-col w-1/2 gap-10 justify-between">
+        <div className="flex flex-col justify-between w-1/2 gap-10">
           <div className=" bg-gradient-to-tl to-white from-transparent rounded-3xl py-[1px] pr-[1px] ">
             <div className="flex flex-row w-full bg-[#1B355D] rounded-3xl p-5 justify-center items-center gap-5">
               <div className="flex flex-col w-1/2 justify-center items-center drop-shadow-md bg-[#1C355D] rounded-3xl py-3 gap-3">
@@ -84,7 +84,7 @@ export default function DetailsSection3() {
                   Today
                 </div>
                 <div className="w-full h-[1px] bg-[#E7E7E74D]" />
-                <div className="flex flex-row justify-center items-center gap-5">
+                <div className="flex flex-row items-center justify-center gap-5">
                   <img src={IncomeIcon} alt="income-icon" />
                   <div className="text-white text-sm font-medium font-['Inter'] leading-snug">
                     Rent Payout Received <br />
@@ -92,7 +92,7 @@ export default function DetailsSection3() {
                   </div>
                 </div>
               </div>
-              <div className="w-1/2 flex flex-col gap-3">
+              <div className="flex flex-col w-1/2 gap-3">
                 <div className="text-white text-xl font-semibold font-['Poppins'] leading-tight">
                   Stable Daily Income
                 </div>
@@ -106,21 +106,23 @@ export default function DetailsSection3() {
           <div className=" bg-gradient-to-tl to-white from-transparent rounded-3xl py-[1px] pr-[1px] ">
             <div className="flex flex-row w-full bg-[#1B355D] rounded-3xl p-5 justify-center items-center gap-5">
               <div className="flex flex-col w-1/2 justify-center items-center drop-shadow-md bg-[#1C355D] rounded-3xl py-8 gap-3">
-                
-                <div className="flex flex-row justify-center items-center gap-5">
+                <div className="flex flex-row items-center justify-center gap-5">
                   <img src={TotalPropertyIcon} alt="income-icon" />
                   <div className="text-white text-sm font-medium font-['Inter'] leading-snug">
-                  Total Property Value<br />
-                    <span className=" text-[#05F691] text-base font-normal">0.00354 ETH</span>
+                    Total Property Value
+                    <br />
+                    <span className=" text-[#05F691] text-base font-normal">
+                      0.00354 ETH
+                    </span>
                   </div>
                 </div>
               </div>
-              <div className="w-1/2 flex flex-col gap-3">
+              <div className="flex flex-col w-1/2 gap-3">
                 <div className="text-white text-xl font-semibold font-['Poppins'] leading-tight">
-                Capital Appreciation
+                  Capital Appreciation
                 </div>
                 <div className="text-white text-base font-light font-['Inter'] leading-snug">
-                From Property Value Growth
+                  From Property Value Growth
                 </div>
               </div>
             </div>

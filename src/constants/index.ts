@@ -35,6 +35,12 @@ import SecurityIcon from "../assets/icons/navbar/security.svg";
 import LoginIcon from "../assets/icons/navbar/login.svg";
 import RegisterIcon from "../assets/icons/navbar/register.svg";
 import ConnectIcon from "../assets/icons/navbar/connect.svg";
+import NFTHolderIcon from "../assets/icons/home-page/nft-holder.svg";
+import TicIcon from "../assets/icons/home-page/tic.svg";
+import PropertyOwnerIcon from "../assets/icons/home-page/property-owner.svg";
+import IncomeIcon from "../assets/icons/home-page/income.svg";
+import TotalPropertyIcon from "../assets/icons/home-page/total-property.svg";
+import EthereumIcon from "../assets/icons/home-page/eth.svg";
 import doneIcon from "../assets/icons/doneIcon.svg";
 import carbonSecurityIcon from "../assets/icons/carbonSecurityIcon.svg";
 import RightArrowIcon from "../assets/icons/rightArrowIcon.svg";
@@ -83,6 +89,12 @@ export {
   LoginIcon,
   RegisterIcon,
   ConnectIcon,
+  NFTHolderIcon,
+  TicIcon,
+  PropertyOwnerIcon,
+  IncomeIcon,
+  TotalPropertyIcon,
+  EthereumIcon,
   FtwitterIcon,
   FyoutubeIcon,
   FfacebookIcon,
@@ -109,6 +121,18 @@ import WalletConnect from "../assets/images/home-page/wallet-connect.png";
 import Phantom from "../assets/images/home-page/phantom.png";
 import CollectionBG from "../assets/images/home-page/collection-bg.png";
 import CollectionDemoIcon from "../assets/images/home-page/collection-icon.png";
+import EarnIcon from "../assets/images/home-page/earn.png";
+import FindingIcon from "../assets/images/home-page/finding.png";
+import PropertyListIcon from "../assets/images/home-page/property-list.png";
+import VerifiedExpertsIcon from "../assets/images/home-page/verified-experts.png";
+import ComIcon1 from "../assets/images/home-page/com-1.png";
+import ComIcon2 from "../assets/images/home-page/com-2.png";
+import ComIcon3 from "../assets/images/home-page/com-3.png";
+import ComIcon4 from "../assets/images/home-page/com-4.png";
+import ComIcon5 from "../assets/images/home-page/com-5.png";
+import ComIcon6 from "../assets/images/home-page/com-6.png";
+import ComIcon7 from "../assets/images/home-page/com-7.png";
+import ComIcon8 from "../assets/images/home-page/com-8.png";
 
 export {
   LuxuryHome1,
@@ -119,7 +143,20 @@ export {
   Phantom,
   CollectionBG,
   CollectionDemoIcon,
+  EarnIcon,
+  FindingIcon,
+  PropertyListIcon,
+  VerifiedExpertsIcon,
+  ComIcon1,
+  ComIcon2,
+  ComIcon3,
+  ComIcon4,
+  ComIcon5,
+  ComIcon6,
+  ComIcon7,
+  ComIcon8,
 };
+
 
 export const footerLinks = [
   {

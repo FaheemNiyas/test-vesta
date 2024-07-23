@@ -1,3 +1,6 @@
+// src/pages/Authentication/SecurityOption.tsx
+// This page allows users to configure their security settings.
+
 import React, { useState } from "react";
 import Button from "@/components/atoms/Button";
 import OptionalCard from "@/components/organisms/OptionalCard";

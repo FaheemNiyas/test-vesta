@@ -1,3 +1,6 @@
+// src/pages/Authentication/ForgotPasswordPage.tsx
+// This page allows users to reset their password if they have forgotten it.
+
 import { useState } from "react";
 import AuthLayout from "@/layouts/AuthLayout";
 import OptionalCard from "@/components/organisms/OptionalCard";

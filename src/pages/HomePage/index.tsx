@@ -1,3 +1,6 @@
+// src/pages/HomePage.tsx
+// This is the main landing page of the application.
+
 import MainLayout from "@/layouts/MainLayout";
 import LandingPage from "./Components/LandingPage";
 import CollectionComponent from "./Components/CollectionComponent";
@@ -7,6 +10,14 @@ import DetailsSection2 from "./Components/DetailsSection2";
 import { useLoginSuccess } from "@/services/auth.service";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import DetailsSection3 from "./Components/DetailsSection3";
+import DetailsSection4 from "./Components/DetailsSection4";
+import TrendingCompanies from "./Components/TrendingCompanies";
+import TrendingNFT from "./Components/TrendingNFT";
+import LiveAuction from "./Components/LiveAuction";
+import TopCollection from "./Components/TopCollection";
+import UpcomingMint from "./Components/UpcomingMint";
+import Subscribe from "./Components/Subscribe";
 
 const HomePage = () => {
   const useLoginSuccessMutation = useLoginSuccess();
@@ -35,27 +46,20 @@ const HomePage = () => {
 
   return (
     <>
-      <div>Rikas</div>
       <MainLayout>
         <LandingPage />
-        <SearchBox />
         <CollectionComponent />
+        <SearchBox />
         <DetailsSection1 />
         <DetailsSection2 />
-        {/* <div className="flex flex-col gap-16">
-          <div>
-            w3m-button <w3m-button />
-          </div>
-          <div>
-            w3m-account-button <w3m-account-button />
-          </div>
-          <div>
-            w3m-connect-button <w3m-connect-button />
-          </div>
-          <div>
-            w3m-network-button <w3m-network-button />
-          </div>
-        </div> */}
+        <DetailsSection3 />
+        <DetailsSection4 />
+        <TrendingCompanies />
+        <TrendingNFT />
+        <LiveAuction />
+        <TopCollection />
+        <UpcomingMint />
+        <Subscribe />
       </MainLayout>
     </>
   );

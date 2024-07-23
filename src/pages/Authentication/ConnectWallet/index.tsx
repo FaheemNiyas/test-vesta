@@ -1,3 +1,6 @@
+// src/pages/Authentication/ConnectWallet.tsx
+// This page allows users to connect their cryptocurrency wallet to the application.
+
 import React, { useEffect } from "react";
 import OptionalCard from "@/components/organisms/OptionalCard";
 import AuthLayout from "@/layouts/AuthLayout";

@@ -1,3 +1,6 @@
+// src/pages/Authentication/Profile/index.tsx
+// This page displays and allows users to update their profile information.
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthLayout from "@/layouts/AuthLayout";

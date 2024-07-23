@@ -48,6 +48,7 @@ const Dashboard = lazy(() => import("./pages/Stats/Dashboard"));
 const OnOffRamp = lazy(() => import("./pages/Stats/OnOffRamp"));
 const Rankings = lazy(() => import("./pages/Stats/Rankings"));
 const Swap = lazy(() => import("./pages/Stats/Swap"));
+const Success = lazy(() => import("./pages/Authentication/Success"));
 
 const App = () => {
   return (
@@ -85,6 +86,7 @@ const App = () => {
           <Route path="/user-compliance" element={<UserCompliance />} />
           <Route path="/questionary" element={<Questionary />} />
           <Route path="/referral-link" element={<ReferralLinkPage />} />
+          <Route path="/success" element={<Success />} />
 
           {/* Stats Routes */}
           <Route path="/dashboard" element={<Dashboard />} />

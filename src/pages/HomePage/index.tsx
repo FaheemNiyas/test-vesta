@@ -35,6 +35,13 @@ const HomePage = () => {
             localStorage.setItem("email", data.data.data.profile.email);
             localStorage.setItem("jwt", data.data.data.token);
             navigate("/profile");
+          } else if (
+            data.data.data.profile.twoFactorAuthentication === true &&
+            data.data.data.profile.status === "APPROVED"
+          ) {
+            localStorage.setItem("email", data.data.data.profile.email);
+            localStorage.setItem("jwt", data.data.data.token);
+            navigate("/google-authentication?login=true");
           }
         },
         onError: (error) => {

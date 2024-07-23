@@ -84,10 +84,10 @@ export default function Carousel({
                 </SwiperSlide>
               ))}
           </Swiper>
-          <div className="swiper-button-next custom-button">
+          <div className="swiper-button-next custom-button z-10">
             <img src={RightArrowIcon} alt="Next" />
           </div>
-          <div className="swiper-button-prev custom-button">
+          <div className="swiper-button-prev custom-button z-10">
             <img src={LeftArrowIcon} alt="Prev" />
           </div>
         </>

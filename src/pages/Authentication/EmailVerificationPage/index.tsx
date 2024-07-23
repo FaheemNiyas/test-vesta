@@ -1,3 +1,6 @@
+// src/pages/Authentication/EmailVerificationPage.tsx
+// This page handles email verification for users after registration.
+
 import VerificationStatus from "@/components/organisms/EmailVerify";
 import { VestaRoundedLogo } from "@/constants";
 

@@ -1,3 +1,6 @@
+// src/pages/Authentication/SignupPage.tsx
+// This page provides the registration form for new users to create an account.
+
 import React, { useState } from "react";
 import AuthLayout from "@/layouts/AuthLayout";
 import { useNavigate } from "react-router-dom";

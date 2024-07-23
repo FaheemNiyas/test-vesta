@@ -1,3 +1,6 @@
+// src/pages/Authentication/LoginPage.tsx
+// This page provides the login form for users to access their accounts.
+
 import React, { useState } from "react";
 import AuthLayout from "@/layouts/AuthLayout";
 import AuthForm from "@/components/organisms/AuthForm";

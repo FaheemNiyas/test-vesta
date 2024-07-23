@@ -1,3 +1,6 @@
+// src/pages/GoogleAuthenticationPage.tsx
+// This page handles verify google auth through Google accounts.
+
 import OptionalCard from "@/components/organisms/OptionalCard";
 import AuthLayout from "@/layouts/AuthLayout";
 import { useState } from "react";

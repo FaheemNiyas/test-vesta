@@ -1,3 +1,6 @@
+// src/pages/Authentication/TwoStepVerificationPage.tsx
+// This page handles two-step verification for enhanced user security.
+
 import AuthLayout from "@/layouts/AuthLayout";
 import StepLayout from "@/layouts/StepLayout";
 

@@ -1,3 +1,6 @@
+// src/pages/NotFoundPage.tsx
+// This page is displayed when the user navigates to a route that does not exist.
+
 import { Link } from "react-router-dom";
 import { FaExclamationTriangle } from "react-icons/fa";
 

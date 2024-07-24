@@ -11,7 +11,7 @@ const SearchBox: React.FC = () => {
     "Healthcare",
   ];
   return (
-    <div className=" z-10 max-w-fit gap-10 bg-[#1C355D] absolute left-0 right-0 mx-auto top-[1450px] rounded-2xl flex flex-col justify-between py-10">
+    <div className=" z-10 max-w-fit gap-10 bg-[#1C355D] absolute left-0 right-0 mx-auto md:top-[1450px] top-[660px] rounded-2xl flex flex-col justify-between py-10">
       <div className="text-white text-xl font-normal font-['Poppins'] leading-tight w-full text-center">
         Popular In Last 7 Days
       </div>

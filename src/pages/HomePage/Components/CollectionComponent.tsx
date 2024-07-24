@@ -39,7 +39,7 @@ const SlideContent: React.FC<SlideContentProps> = ({
     return Array.from({ length: totalCollections }).map((_, index) => (
       <div
         key={index}
-        className={`w-8 h-8 rounded-full ${
+        className={`md:w-8 md:h-8 w-4 h-4 rounded-full ${
           index === currentIndex
             ? "bg-gradient-to-l to-[#05F691] from-[#EFE709] border-2 border-secondary"
             : "bg-secondary"
@@ -50,26 +50,27 @@ const SlideContent: React.FC<SlideContentProps> = ({
 
   return (
     <div className="bg-gradient-to-l to-[#05F691] from-[#EFE709]">
-      <div className="flex flex-col w-full min-h-[609px] bg-no-repeat bg-cover bg-[#08080836] p-4 pt-10 md:p-8 bg-[url('/assets/collection-bg.png')]">
-        <div className="flex flex-col w-full p-[75px]">
-          <img src={collectionImage} width={70} alt="Collection" />
-          <div className="flex flex-row items-center gap-5 text-white text-[40px] font-semibold font-['Inter'] leading-[88px]">
-            {collectionName} <img src={VerifyIcon} alt="Verified" />
+      <div className="flex md:flex-col flex-row items-end w-full md:min-h-[609px] bg-no-repeat md:bg-cover bg-contain bg-[#08080836] p-4 md:pt-10 md:p-8 md:bg-[url('/assets/collection-bg.png')] bg-[url('/assets/collection-bg-mobile.png')]">
+        <div className="flex flex-col w-full md:p-[75px]">
+          <img src={collectionImage} className="md:w-[70px] w-[24px]" alt="Collection" />
+          <div className="flex flex-row items-center md:gap-5 gap-2 text-white text-[14px] md:text-[40px] font-semibold font-['Inter'] md:leading-[88px] leading-normal">
+            {collectionName} <img src={VerifyIcon} className="md:w-auto w-[15px]" alt="Verified" />
           </div>
-          <div className="flex flex-row items-center gap-5 text-white text-xl font-semibold font-['Inter'] leading-normal">
+          <div className="flex flex-row items-center gap-5 text-white text-[9px] md:text-xl font-semibold font-['Inter'] leading-normal">
             by {creatorName} <img src={VerifyIcon} width={20} alt="Verified" />
           </div>
-          <div className="text-white text-xl font-semibold font-['Inter'] leading-normal mt-2">
+          <div className="text-white text-[9px] md:text-xl font-semibold font-['Inter'] leading-normal md:mt-2">
             Floor Price {floorPrice} ETH
           </div>
           <button
-            className="flex flex-row w-fit items-center justify-center gap-3 bg-[#1F365B] text-white py-3 px-10 rounded-full mt-10"
+            className="flex flex-row w-fit items-center justify-center gap-3 bg-[#1F365B] text-white md:py-3 md:px-10 py-2 px-5 rounded-full md:mt-10 text-[9px] md:text-xl mt-2"
             onClick={handleClick}
           >
-            See Collection <img src={LaunchArrowIcon} alt="Launch" />
+            See Collection <img src={LaunchArrowIcon} className="md:block hidden" alt="Launch" />
           </button>
-          <div className="flex mt-4 space-x-2">{renderDots()}</div>
+          <div className="md:flex mt-4 space-x-2 hidden">{renderDots()}</div>
         </div>
+        <div className="flex mt-4 space-x-2 md:hidden">{renderDots()}</div>
       </div>
     </div>
   );
@@ -151,8 +152,8 @@ const collectionsSlides = [
 
 const CollectionComponent: React.FC = () => {
   return (
-    <div className="relative">
-      <Carousel slideList={collectionsSlides} slidesPerView={1} isFullScreen={true} navigation={true} />
+    <div className="md:relative">
+      <Carousel slideList={collectionsSlides} slidesPerView={1} isFullScreen={true} navigation={true} pagination={false}/>
     </div>
   );
 };

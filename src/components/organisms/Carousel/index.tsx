@@ -19,6 +19,7 @@ export default function Carousel({
   slidesPerView,
   autoplay = false,
   isFullScreen = false,
+  navigation = false,
 }: SwiperProps) {
   return (
     <div className="w-40screen min-w-fill-available">
@@ -26,10 +27,14 @@ export default function Carousel({
         <>
           <Swiper
             spaceBetween={30}
-            pagination={{ clickable: false }}
+            pagination={{
+              clickable: true,
+              enabled: pagination,
+            }}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
+              enabled:navigation
             }}
             modules={[Pagination, Navigation]}
             className="mySwiper"
@@ -60,6 +65,7 @@ export default function Carousel({
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
+              enabled:navigation
             }}
             freeMode={true}
             loop={true}
@@ -84,12 +90,14 @@ export default function Carousel({
                 </SwiperSlide>
               ))}
           </Swiper>
+          {navigation && <>
           <div className="swiper-button-next custom-button z-10">
             <img src={RightArrowIcon} alt="Next" />
           </div>
           <div className="swiper-button-prev custom-button z-10">
             <img src={LeftArrowIcon} alt="Prev" />
           </div>
+          </>}
         </>
       )}
     </div>

@@ -50,14 +50,14 @@ const SlideContent: React.FC<SlideContentProps> = ({
 
   return (
     <div className="bg-gradient-to-l to-[#05F691] from-[#EFE709]">
-      <div className="flex md:flex-col flex-row items-end w-full md:min-h-[609px] bg-no-repeat md:bg-cover bg-contain bg-[#08080836] p-4 md:pt-10 md:p-8 md:bg-[url('/assets/collection-bg.png')] bg-[url('/assets/collection-bg-mobile.png')]">
+      <div className="flex md:flex-col flex-row items-end w-full md:min-h-[609px] bg-no-repeat bg-cover  bg-[#08080836] p-4 md:pt-10 md:p-8 md:bg-[url('/assets/collection-bg.png')] bg-[url('/assets/collection-bg-mobile.png')]">
         <div className="flex flex-col w-full md:p-[75px]">
           <img src={collectionImage} className="md:w-[70px] w-[24px]" alt="Collection" />
           <div className="flex flex-row items-center md:gap-5 gap-2 text-white text-[14px] md:text-[40px] font-semibold font-['Inter'] md:leading-[88px] leading-normal">
             {collectionName} <img src={VerifyIcon} className="md:w-auto w-[15px]" alt="Verified" />
           </div>
-          <div className="flex flex-row items-center gap-5 text-white text-[9px] md:text-xl font-semibold font-['Inter'] leading-normal">
-            by {creatorName} <img src={VerifyIcon} width={20} alt="Verified" />
+          <div className="flex flex-row items-center md:gap-5 gap-2 text-white text-[9px] md:text-xl font-semibold font-['Inter'] leading-normal">
+            by {creatorName} <img src={VerifyIcon} className="md:w-auto w-[10px]" alt="Verified" />
           </div>
           <div className="text-white text-[9px] md:text-xl font-semibold font-['Inter'] leading-normal md:mt-2">
             Floor Price {floorPrice} ETH

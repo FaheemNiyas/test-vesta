@@ -6,7 +6,7 @@ export default function LandingPageCard() {
     <>
     <div className="w-[273px] h-[265px] relative md:block hidden">
       <div className="w-[264.92px] h-[154.47px] left-[4.44px] top-[75.54px] absolute">
-        <div className="w-[264.92px] h-[154.47px] left-0 top-0 absolute bg-gradient-to-l from-yellow-400 to-emerald-400 rounded-[30px]" />
+        <div className="w-[264.92px] h-[154.47px] left-0 top-0 absolute bg-gradient-to-l from-yellow-400 to-[#05f691] rounded-[30px]" />
       </div>
       <div className="w-[265px] h-[235px] left-[4px] top-0 absolute">
         <img
@@ -62,11 +62,11 @@ export default function LandingPageCard() {
     </div>
     <div className="w-[136px] h-[124px] relative block md:hidden">
     <div className="w-[131.97px] h-[77.24px] left-[2.21px] top-[29.27px] absolute">
-        <div className="w-[131.97px] h-[77.24px] left-0 top-0 absolute bg-gradient-to-l from-yellow-400 to-emerald-400 rounded-[15px]" />
+        <div className="w-[131.97px] h-[77.24px] left-0 top-0 absolute bg-gradient-to-l from-yellow-400 to-[#05f691] rounded-[15px]" />
     </div>
     <div className="w-[131.97px] h-[109px] left-[2.03px] top-0 absolute">
         <div className="w-[131.97px] h-[77.24px] left-0 top-[31.27px] absolute">
-            <div className="w-[131.97px] h-[77.24px] left-0 top-0 absolute bg-gradient-to-l from-yellow-400 to-emerald-400 rounded-[15px]" />
+            <div className="w-[131.97px] h-[77.24px] left-0 top-0 absolute bg-gradient-to-l from-yellow-400 to-[#05f691] rounded-[15px]" />
         </div>
         <img className="w-[131.52px] h-[109px] left-[0.46px] top-0 absolute rounded-bl-[15px] rounded-br-[15px]"  src={LuxuryHome1} />
     </div>

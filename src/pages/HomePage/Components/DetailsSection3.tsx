@@ -43,13 +43,14 @@ export default function DetailsSection3() {
   ];
   return (
     <div className="flex flex-col w-full ">
-      <div className="flex flex-row items-center justify-center w-full gap-20 px-20 py-20">
-        <div className="flex flex-col w-1/2 ">
-          <div className="headline-gradient-1 text-[55px] font-medium font-['Inter']">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full gap-20 md:px-20 md:py-20 px-5">
+        <div className="flex flex-col w-full md:w-1/2 md:px-0 px-10 ">
+          <div className="headline-gradient-1 text-2xl md:text-[55px] font-medium font-['Inter'] block md:hidden pb-5">
             How our NFT Holders make money?
           </div>
-          <div className="flex flex-row justify-between">
-            <div className="flex flex-col gap-2">
+          <div className="headline-gradient-1 text-[55px] font-medium font-['Inter'] md:block hidden">How our NFT Holders make money?</div>
+          <div className="flex flex-col md:gap-0 gap-10 md:flex-row justify-between">
+            <div className="flex flex-col md:gap-2 gap-5">
               {nftHolders.map((item, index) => (
                 <div key={index} className="flex flex-row gap-2">
                   <img alt="item-name" src={item.icon} />
@@ -59,7 +60,7 @@ export default function DetailsSection3() {
                 </div>
               ))}
             </div>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col md:gap-2 gap-5">
               {propertyOwner.map((item, index) => (
                 <div key={index} className="flex flex-row gap-2">
                   <img alt="item-name" src={item.icon} />
@@ -76,10 +77,10 @@ export default function DetailsSection3() {
             </div>
           </button>
         </div>
-        <div className="flex flex-col justify-between w-1/2 gap-10">
+        <div className="flex flex-col justify-between w-full md:w-1/2 gap-10 px-5">
           <div className=" bg-gradient-to-tl to-white from-transparent rounded-3xl py-[1px] pr-[1px] ">
-            <div className="flex flex-row w-full bg-[#1B355D] rounded-3xl p-5 justify-center items-center gap-5">
-              <div className="flex flex-col w-1/2 justify-center items-center drop-shadow-md bg-[#1C355D] rounded-3xl py-3 gap-3">
+            <div className="flex flex-col md:flex-row w-full bg-[#1B355D] rounded-3xl p-5 justify-center items-center gap-5">
+              <div className="flex flex-col w-full md:w-1/2 justify-center items-center drop-shadow-md bg-[#1C355D] rounded-3xl py-3 gap-3">
                 <div className="text-slate-400 text-base font-normal font-['Inter'] leading-snug">
                   Today
                 </div>
@@ -92,7 +93,7 @@ export default function DetailsSection3() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col w-1/2 gap-3">
+              <div className="flex flex-col w-[80%] md:w-1/2 gap-3">
                 <div className="text-white text-xl font-semibold font-['Poppins'] leading-tight">
                   Stable Daily Income
                 </div>
@@ -104,8 +105,8 @@ export default function DetailsSection3() {
           </div>
 
           <div className=" bg-gradient-to-tl to-white from-transparent rounded-3xl py-[1px] pr-[1px] ">
-            <div className="flex flex-row w-full bg-[#1B355D] rounded-3xl p-5 justify-center items-center gap-5">
-              <div className="flex flex-col w-1/2 justify-center items-center drop-shadow-md bg-[#1C355D] rounded-3xl py-8 gap-3">
+            <div className="flex flex-col md:flex-row w-full bg-[#1B355D] rounded-3xl p-5 justify-center items-center gap-5">
+              <div className="flex flex-col w-full md:w-1/2 justify-center items-center drop-shadow-md bg-[#1C355D] rounded-3xl py-4 gap-3">
                 <div className="flex flex-row items-center justify-center gap-5">
                   <img src={TotalPropertyIcon} alt="income-icon" />
                   <div className="text-white text-sm font-medium font-['Inter'] leading-snug">
@@ -117,7 +118,7 @@ export default function DetailsSection3() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col w-1/2 gap-3">
+              <div className="flex flex-col w-[85%] md:w-1/2 gap-3">
                 <div className="text-white text-xl font-semibold font-['Poppins'] leading-tight">
                   Capital Appreciation
                 </div>

@@ -15,10 +15,13 @@ export default function UpcomingMint() {
       ];
 
   return (
-    <div className="flex flex-col w-full justify-center items-center gap-10 py-40 relative">
-      <div className="headline-gradient-1 text-[55px] font-medium font-['Inter']">Upcoming Mints</div>
-      <div className="w-full  ">
+    <div className="flex flex-col w-full justify-center items-center gap-10 md:py-40 py-10 relative">
+      <div className="headline-gradient-1 text-2xl md:text-[55px] font-medium font-['Inter'] leading-normal">Upcoming Mints</div>
+      <div className="w-full  md:block hidden">
         <Carousel slideList={nftList} slidesPerView={3} navigation={true} />
+      </div>
+      <div className="w-full  block md:hidden">
+        <Carousel slideList={nftList} slidesPerView={1.8} navigation={true} />
       </div>
     </div>
   );

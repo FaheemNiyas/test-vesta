@@ -25,12 +25,15 @@ export default function TrendingCompanies() {
   ];
 
   return (
-    <div className="flex flex-col items-center justify-center w-full gap-10 py-40">
-      <div className="text-center text-[55px] font-medium font-['Inter'] headline-gradient-1 w-fit">
+    <div className="flex flex-col items-center justify-center w-full gap-10 md:py-40 py-10">
+      <div className="text-center text-2xl md:text-[55px] font-medium font-['Inter'] headline-gradient-1 w-fit leading-normal">
         Trending Companies
       </div>
-      <div className="w-full ">
+      <div className="w-full md:block hidden">
         <Carousel slideList={nftList} slidesPerView={7} navigation={true} />
+      </div>
+      <div className="w-full block md:hidden">
+        <Carousel slideList={nftList} slidesPerView={3} navigation={true} />
       </div>
     </div>
   );

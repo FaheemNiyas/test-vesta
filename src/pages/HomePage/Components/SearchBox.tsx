@@ -15,7 +15,7 @@ const SearchBox: React.FC = () => {
       <div className="text-white text-[10px] md:text-xl font-normal font-['Poppins'] leading-tight w-full text-center mb-3 md:mb-0">
         Popular In Last 7 Days
       </div>
-      <div className="flex flex-row overflow-auto justify-between w-full md:gap-10 gap-3 md:px-10 px-3">
+      <div className="flex flex-row justify-between w-full gap-3 px-3 overflow-auto md:gap-10 md:px-10 no-scrollbar">
         {filters.map((filter) => (
           <button
             key={filter}
@@ -25,7 +25,7 @@ const SearchBox: React.FC = () => {
           </button>
         ))}
       </div>
-      <div className="flex flex-row justify-between w-full gap-10 md:px-10 px-3">
+      <div className="flex flex-row justify-between w-full gap-10 px-3 md:px-10">
         <div className="flex flex-row justify-between w-full md:h-[50px] h-[30px] bg-slate-800 rounded-[100px]">
           <input
             placeholder="Search NFT by Keywords..."

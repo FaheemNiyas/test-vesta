@@ -63,3 +63,7 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.no-scrollbar {
+  scrollbar-width: none;
+}
